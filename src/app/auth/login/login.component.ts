@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
         const token = this.authService.getToken();
         console.log('Token:', token); // Verifica il token nella console
 
-        this.router.navigate(['/clienti']);
+        this.router.navigate(['/users']);
         console.log('Login effettuato:', response);
       },
       (error) => {

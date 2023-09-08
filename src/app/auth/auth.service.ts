@@ -23,11 +23,10 @@ export class AuthService {
   }
 
 
-  register(username:String, nome:String,  cognome: string,
+  register(username:String, name:String,  surname: string,
     email: string,
-    password: string,
-    ruolo: string): Observable<any> {
-      const newUser = { email, password, nome, cognome,ruolo, username};
+    password: string): Observable<any> {
+      const newUser = { email, password, name, surname, username};
     return this.http.post<any>('http://localhost:3001/auth/register', newUser);
   }
   logout() {

@@ -4,12 +4,12 @@
       <h2>Registrazione</h2>
       <form>
         <div class="mb-3">
-          <label for="nome" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="nome" name="nome" required [(ngModel)]=" nome">
+          <label for="name" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="name" name="name" required [(ngModel)]="name">
         </div>
         <div class="mb-3">
-          <label for="cognome" class="form-label">Cognome</label>
-          <input type="text" class="form-control" id="cognome" name="cognome" required [(ngModel)]="cognome">
+          <label for="surname" class="form-label">Cognome</label>
+          <input type="text" class="form-control" id="surname" name="surname" required [(ngModel)]="surname">
         </div>
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
@@ -22,13 +22,6 @@
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
           <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="password">
-        </div>
-        <div class="mb-3">
-          <label for="ruolo" class="form-label">Ruolo</label>
-          <select class="form-select" id="ruolo" name="ruolo" required [(ngModel)]="ruolo">
-            <option value="USER">USER</option >
-            <option value="ADMIN">ADMIN</option>
-          </select>
         </div>
         <button (click)="register()" type="submit" class="btn btn-primary">Registrati</button>
       </form>

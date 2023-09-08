@@ -7,18 +7,17 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  name:string = '';
+  surname: string = '';
   username: string = '';
-  password: string = '';
-nome :string = '';
-cognome: string = '';
-ruolo :string = '';
-email :string = '';
+  email :string = '';
+  password: string = ''
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
 register(){
-  this.authService.register(this.username, this.nome, this.cognome, this.email, this.password, this.ruolo).subscribe(
+  this.authService.register(this.username, this.name, this.surname, this.email, this.password).subscribe(
     (response) => {
       console.log('Registrazione effettuata:', response);
       this.router.navigate(['/login']);
