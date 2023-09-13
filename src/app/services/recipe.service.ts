@@ -52,4 +52,26 @@ export class RecipeService {
     return this.http.post<Ingredient>(this.urlIngredients, ingredient, { headers });
   }
 
+  updateRecipe(recipe: Recipe): Observable<Recipe> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    });
+    const url = `${this.urlRecipes}/${recipe.id}`;
+    return this.http.put<Recipe>(url, recipe, { headers });
+  }
+
+
+  deleteRecipe(recipeId: number): Observable<void> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    });
+    const url = `${this.urlRecipes}/${recipeId}`;
+    return this.http.delete<void>(url, { headers });
+  }
+
+  searchRecipesByIngredients(ingredients: string[]): Observable<Recipe[]> {
+    const params = new HttpParams().set('ingredients', ingredients.join(','));
+    return this.http.get<Recipe[]>(`${this.urlRecipes}/search`, { params });
+  }
 }
+

@@ -1,1 +1,35 @@
-<p>homepage works!</p>
+<div class="container">
+  <h1>Homepage</h1>
+
+  <!-- Input per inserire gli ingredienti -->
+  <div class="form-group">
+    <label for="ingredientInput">Inserisci gli ingredienti (separati da virgole o punti e virgola)</label>
+    <input type="text" class="form-control" id="ingredientInput" [(ngModel)]="ingredientInput">
+  </div>
+
+  <!-- Bottone per avviare la ricerca -->
+  <button class="btn btn-primary" (click)="searchRecipes()">
+    Cerca Ricette
+  </button>
+
+  <!-- Visualizzazione delle ricette con esattamente quegli ingredienti -->
+  <div *ngIf="recipesWithExactIngredients.length > 0">
+    <h2>Ricette con gli ingredienti specificati:</h2>
+    <ul>
+      <li *ngFor="let recipe of recipesWithExactIngredients">
+        recipesWithExactIngredients
+      </li>
+    </ul>
+  </div>
+
+  <!-- Visualizzazione delle ricette con almeno uno degli ingredienti specificati -->
+  <div *ngIf="recipesWithAnyIngredients.length > 0">
+    <h2>Ricette con almeno uno degli ingredienti specificati:</h2>
+    <div *ngFor="let recipe of recipesWithAnyIngredients">
+      <h3>{{recipe.title}}</h3>
+      <ul>
+        <li>{{recipe.cookTime}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

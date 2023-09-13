@@ -19,6 +19,8 @@
               <li>Quantity: {{ingredient.quantity}}</li>
             </ul>
           </div>
+          <button class="btn btn-danger" (click)="deleteRecipe(recipe.id!)">Delete</button>
+          <button class="btn btn-warning" (click)="updateRecipe(newRecipe)">Edit</button>
         </div>
       </div>
     </div>
@@ -61,23 +63,41 @@
 
     <div class="form-group">
       <label for="Ingredients">Ingredients</label>
-      <select class="form-control" [(ngModel)]="selectedIngredients" name="selectedIngredient">
-        <option *ngFor="let ingredient of ingredients" [value]="ingredient.name">{{ ingredient.name }}</option>
+      <select class="form-control" [(ngModel)]="selectedIngredients" name="selectedIngredient" multiple>
+        <option *ngFor="let ingredient of ingredients" [value]="ingredient">{{ ingredient.name }}</option>
       </select>
-      <input type="text" class="form-control" [(ngModel)]="newIngredient.name" name="name">
-      <input type="text" class="form-control" [(ngModel)]="newIngredient.quantity" name="quantity">
-      <button (click)="addIngredientToList()" class="btn btn-primary">Aggiungi Ingrediente</button>
     </div>
+
+
+
+    <div class="mt-3">
+      <button type="submit" class="btn btn-primary">Salva</button>
+      <button type="button" class="btn btn-secondary">Annulla</button>
+    </div>
+  </form>
+
+  <hr>
+
+  <!-- Form per creare un nuovo ingrediente -->
+  <form>
+    <div class="form-group">
+      <label for="newIngredient">Crea un nuovo ingrediente qui sotto</label>
+      <input type="text" class="form-control" [(ngModel)]="newIngredient.name" name="name"
+        placeholder="Ingredient name">
+      <input type="text" class="form-control" [(ngModel)]="newIngredient.quantity" name="quantity"
+        placeholder="Ingredient quantity">
+      <button (click)="addIngredientToList()" class="btn btn-primary mt-3">Aggiungi ingrediente</button>
+    </div>
+    <!-- Elenco degli ingredienti aggiunti -->
+    <hr>
     <div>
-      <h4>Ingredienti Aggiunti:</h4>
+      <h4>Ingredienti aggiunti:</h4>
       <ul>
-        <li *ngFor="let ingredient of selectedIngredients">{{ ingredient.name }} - {{ ingredient.quantity }}</li>
+        <li *ngFor="let ingredient of selectedIngredients"> {{ ingredient.name }} - {{ ingredient.quantity }}
+          <button class="btn btn-danger" (click)="removeIngredient(ingredient)">Rimuovi</button>
+        </li>
       </ul>
+
     </div>
-
-
-
-    <button type="submit" class="btn btn-primary">Salva</button>
-    <button type="button" class="btn btn-secondary">Annulla</button>
   </form>
 </section>
