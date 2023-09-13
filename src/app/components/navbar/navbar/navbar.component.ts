@@ -7,12 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+showButtonsLog: boolean = true;
 
   constructor(private authSrv: AuthService,private router: Router) { }
 
   ngOnInit(): void {
+    if(this.authSrv.isLoggedIn()){
+      this.showButtonsLog = false;
+    }
+
   }
-  logout() {
+
+  logOut() {
     this.authSrv.logout();
     this.router.navigate(['/login']);
     console.log("logout effettuato con successo");

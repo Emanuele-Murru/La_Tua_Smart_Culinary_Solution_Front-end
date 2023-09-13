@@ -1,0 +1,83 @@
+<section class="container">
+  <div *ngFor="let recipe of recipes">
+
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="https://source.unsplash.com/Zh0mYmMBZjQ/600x600" class="img-fluid rounded" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Title: {{recipe.title}}</h5>
+            <span>Category: {{recipe.category}}</span>
+            <p class="card-text">Instructions: {{recipe.instructions}}</p>
+            <p class="card-text">Preparation time: {{recipe.prepTime}}</p>
+            <p class="card-text">Cooking time: {{recipe.cookTime}}</p>
+            <p class="card-text"><small class="text-body-secondary">Servings: {{recipe.servings}}</small></p>
+            <ul *ngFor="let ingredient of recipe.ingredients">
+              <li>Ingredient: {{ingredient.name}}</li>
+              <li>Quantity: {{ingredient.quantity}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form *ngIf="(showForms)" (submit)="createRecipe()">
+
+    <h2>Inserisci una nuova ricetta</h2>
+
+    <div class="form-group">
+      <label for="Title">Title</label>
+      <input type="text" class="form-control" id="title" [(ngModel)]="newRecipe.title" name="title" required>
+    </div>
+
+    <div class="form-group">
+      <label for="Category">Category</label>
+      <input type="text" class="form-control" id="category" [(ngModel)]="newRecipe.category" name="category" required>
+    </div>
+
+    <div class="form-group">
+      <label for="Instructions">Instructions</label>
+      <input type="text" class="form-control" id="instructions" [(ngModel)]="newRecipe.instructions" name="instructions"
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="PrepTime">Preparation time</label>
+      <input type="text" class="form-control" id="prepTime" [(ngModel)]="newRecipe.prepTime" name="prepTime" required>
+    </div>
+
+    <div class="form-group">
+      <label for="CookTime">Cooking time</label>
+      <input type="text" class="form-control" id="cookTime" [(ngModel)]="newRecipe.cookTime" name="cookTime" required>
+    </div>
+
+    <div class="form-group">
+      <label for="Servings">Servings</label>
+      <input type="text" class="form-control" id="servings" [(ngModel)]="newRecipe.servings" name="servings" required>
+    </div>
+
+    <div class="form-group">
+      <label for="Ingredients">Ingredients</label>
+      <select class="form-control" [(ngModel)]="selectedIngredients" name="selectedIngredient">
+        <option *ngFor="let ingredient of ingredients" [value]="ingredient.name">{{ ingredient.name }}</option>
+      </select>
+      <input type="text" class="form-control" [(ngModel)]="newIngredient.name" name="name">
+      <input type="text" class="form-control" [(ngModel)]="newIngredient.quantity" name="quantity">
+      <button (click)="addIngredientToList()" class="btn btn-primary">Aggiungi Ingrediente</button>
+    </div>
+    <div>
+      <h4>Ingredienti Aggiunti:</h4>
+      <ul>
+        <li *ngFor="let ingredient of selectedIngredients">{{ ingredient.name }} - {{ ingredient.quantity }}</li>
+      </ul>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Salva</button>
+    <button type="button" class="btn btn-secondary">Annulla</button>
+  </form>
+</section>
