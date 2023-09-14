@@ -69,150 +69,6 @@ export class RecipesComponent implements OnInit {
     );
   }
 
-  // createRecipe() {
-  //   this.RecipeService.createRecipe(this.newRecipe).subscribe(
-  //     (recipeCreated: Recipe) => {
-  //       console.log("Ricetta creata:", recipeCreated);
-  //       // Resetta i campi della nuova fattura
-  //       this.newRecipe = {
-  //         "title":"",
-  //         "category":"",
-  //         "instructions":"",
-  //         "prepTime":"",
-  //         "cookTime": "",
-  //         "servings": null!,
-  //         "ingredients": undefined
-  //     };
-  //       // Ricarica la lista delle ricette dopo la creazione
-  //       this.loadRecipes();
-  //     },
-  //     (error) => {
-  //       console.error('Errore durante la creazione della ricetta:', error);
-  //     }
-  //   );
-  // }
-
-  // createRecipe() {
-  //   // Crea un oggetto Recipe con i campi forniti
-  //   const recipeToAdd: Recipe = {
-  //     title: this.newRecipe.title,
-  //     category: this.newRecipe.category,
-  //     instructions: this.newRecipe.instructions,
-  //     prepTime: this.newRecipe.prepTime,
-  //     cookTime: this.newRecipe.cookTime,
-  //     servings: this.newRecipe.servings,
-  //     ingredients: [
-  //       {
-  //         name: this.selectedIngredient, // Nome dell'ingrediente selezionato
-  //         quantity: this.newIngredient.quantity // Quantità dell'ingrediente
-  //       }
-  //     ]
-  //   };
-
-  //   this.RecipeService.createRecipe(recipeToAdd).subscribe(
-  //     (recipeCreated: Recipe) => {
-  //       console.log("Ricetta creata:", recipeCreated);
-  //       // Resetta i campi della nuova ricetta
-  //       this.newRecipe = {
-  //         title: '',
-  //         category: '',
-  //         instructions: '',
-  //         prepTime: '',
-  //         cookTime: '',
-  //         servings: null!,
-  //         ingredients: undefined
-  //       };
-  //       // Ricarica la lista delle ricette dopo la creazione
-  //       this.loadRecipes();
-  //     },
-  //     (error) => {
-  //       console.error('Errore durante la creazione della ricetta:', error);
-  //     }
-  //   );
-  // }
-
-  // createRecipe() {
-  //   // Crea un oggetto Recipe con i campi forniti
-  //   const recipeToAdd: Recipe = {
-  //     title: this.newRecipe.title,
-  //     category: this.newRecipe.category,
-  //     instructions: this.newRecipe.instructions,
-  //     prepTime: this.newRecipe.prepTime,
-  //     cookTime: this.newRecipe.cookTime,
-  //     servings: this.newRecipe.servings,
-  //     ingredients: []
-  //   };
-
-  //   if (this.selectedIngredient) {
-  //     // L'utente ha selezionato un ingrediente esistente
-  //     const selectedIngredient = this.ingredients.find(ingredient => ingredient.name === this.selectedIngredient);
-  //     if (selectedIngredient) {
-  //       // Aggiungi l'ingrediente selezionato alla ricetta
-  //       recipeToAdd.ingredients.push(selectedIngredient);
-  //     }
-  //   } else {
-  //     // L'utente sta creando un nuovo ingrediente
-  //     const newIngredient: Ingredient = {
-  //       name: this.newIngredient.name,
-  //       quantity: this.newIngredient.quantity
-  //     };
-
-  //     this.RecipeService.createIngredient(newIngredient).subscribe(
-  //       (ingredientCreated: Ingredient) => {
-  //         console.log("Ingrediente creato:", ingredientCreated);
-  //         // Aggiungi il nuovo ingrediente alla ricetta
-  //         recipeToAdd.ingredients.push(ingredientCreated);
-  //         this.createNewRecipe(recipeToAdd);
-  //       },
-  //       (error) => {
-  //         console.error("Errore durante la creazione dell'ingrediente:", error);
-  //       }
-  //     );
-  //   }
-  // }
-
-  // createNewRecipe(recipeToAdd: Recipe) {
-  //   this.RecipeService.createRecipe(recipeToAdd).subscribe(
-  //     (recipeCreated: Recipe) => {
-  //       console.log("Ricetta creata:", recipeCreated);
-  //       // Resetta i campi della nuova ricetta
-  //       this.newRecipe = {
-  //         title: '',
-  //         category: '',
-  //         instructions: '',
-  //         prepTime: '',
-  //         cookTime: '',
-  //         servings: null!,
-  //         ingredients: []
-  //       };
-  //       // Ricarica la lista delle ricette dopo la creazione
-  //       this.loadRecipes();
-  //     },
-  //     (error) => {
-  //       console.error('Errore durante la creazione della ricetta:', error);
-  //     }
-  //   );
-  // }
-
-  // addIngredientToList() {
-  //   if (this.newIngredient.name && this.newIngredient.quantity) {
-  //     // Verifica se il nome e la quantità dell'ingrediente sono stati forniti
-  //     const newIngredient: Ingredient = {
-  //       name: this.newIngredient.name,
-  //       quantity: this.newIngredient.quantity
-  //     };
-
-  //     // Aggiungi l'ingrediente alla lista degli ingredienti selezionati
-  //     this.selectedIngredients.push(newIngredient);
-
-  //     // Pulisci i campi dell'ingrediente appena aggiunto
-  //     this.newIngredient = {
-  //       name: '',
-  //       quantity: ''
-  //     };
-  //   }
-  // }
-
   addIngredientToList() {
     if (this.newIngredient.name) {
       // Verifico se il nome dell'ingrediente è stato fornito
@@ -234,60 +90,6 @@ export class RecipesComponent implements OnInit {
       console.error('Nome ingrediente obbligatorio.');
     }
   }
-
-  // createRecipe() {
-  //   const recipeToAdd: Recipe = {
-  //     title: this.newRecipe.title,
-  //     category: this.newRecipe.category,
-  //     instructions: this.newRecipe.instructions,
-  //     prepTime: this.newRecipe.prepTime,
-  //     cookTime: this.newRecipe.cookTime,
-  //     servings: this.newRecipe.servings,
-  //     ingredients: this.selectedIngredients,
-  //   };
-
-  //   this.RecipeService.createRecipe(recipeToAdd).subscribe(
-  //     (recipeCreated: Recipe) => {
-  //       console.log('Ricetta creata:', recipeCreated);
-  //       // Resetta i campi della nuova ricetta
-  //       this.newRecipe = {
-  //         title: '',
-  //         category: '',
-  //         instructions: '',
-  //         prepTime: '',
-  //         cookTime: '',
-  //         servings: null!,
-  //         ingredients: undefined,
-  //       };
-  //       // Resetta l'elenco degli ingredienti selezionati
-  //       this.selectedIngredients = [];
-  //       // Ricarica la lista delle ricette dopo la creazione
-  //       this.loadRecipes();
-  //     },
-  //     (error) => {
-  //       console.error('Errore durante la creazione della ricetta:', error);
-  //     }
-  //   );
-  // }
-
-  // createIngredient() {
-  //   this.RecipeService.createIngredient(this.newIngredient).subscribe(
-  //     (ingredientCreated: Ingredient) => {
-  //       console.log('Ingredient created:', ingredientCreated);
-  //       // Aggiungi l'ingrediente creato all'elenco degli ingredienti solo dopo la conferma dal server
-  //       this.ingredients.push(ingredientCreated);
-  //       // Resetta i campi dell'ingrediente appena creato
-  //       this.selectedIngredients;
-  //       this.newIngredient = {
-  //         name: '',
-  //         quantity: '',
-  //       };
-  //     },
-  //     (error) => {
-  //       console.error("Errore durante la creazione dell'ingrediente:", error);
-  //     }
-  //   );
-  // }
 
   createRecipe() {
     // Creazione di una nuova ricetta con ingredienti esistenti
@@ -344,7 +146,7 @@ export class RecipesComponent implements OnInit {
     );
   }
 
-  updateRecipe(recipe: Recipe) {
+  updateRecipe(id:number, recipe: Recipe) {
     const updatedRecipe: Recipe = {
       title: this.newRecipe.title,
       category: this.newRecipe.category,
@@ -355,7 +157,7 @@ export class RecipesComponent implements OnInit {
       ingredients: this.selectedIngredients,
     };
 
-    this.RecipeService.updateRecipe(updatedRecipe).subscribe(
+    this.RecipeService.updateRecipe(id, updatedRecipe).subscribe(
       (updatedRecipeResponse: Recipe) => {
         console.log('Ricetta aggiornata:', updatedRecipeResponse);
         // Esegui qualsiasi azione aggiuntiva necessaria dopo l'aggiornamento
@@ -384,5 +186,10 @@ export class RecipesComponent implements OnInit {
     if (index !== -1) {
       this.selectedIngredients.splice(index, 1);
     }
+  }
+
+  // Metodo per uppercase prima lettera
+  formatInput(text: string) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
   }
 }

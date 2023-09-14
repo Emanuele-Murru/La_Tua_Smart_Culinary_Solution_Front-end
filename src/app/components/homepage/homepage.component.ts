@@ -67,4 +67,8 @@ export class HomepageComponent implements OnInit {
         );
       });
   }
+// Metodo per uppercase prima lettera
+  formatInput(text: string) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }
 }

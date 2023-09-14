@@ -4,7 +4,7 @@
   <!-- Input per inserire gli ingredienti -->
   <div class="form-group">
     <label for="ingredientInput">Inserisci gli ingredienti (separati da virgole o punti e virgola)</label>
-    <input type="text" class="form-control" id="ingredientInput" [(ngModel)]="ingredientInput">
+    <input type="text" class="form-control" id="ingredientInput" [(ngModel)]="ingredientInput" (input)="ingredientInput = formatInput(ingredientInput)">
   </div>
 
   <!-- Bottone per avviare la ricerca -->
@@ -14,21 +14,35 @@
 
   <!-- Visualizzazione delle ricette con esattamente quegli ingredienti -->
   <div *ngIf="recipesWithExactIngredients.length > 0">
+
     <h2>Ricette con gli ingredienti specificati:</h2>
-    <ul>
-      <li *ngFor="let recipe of recipesWithExactIngredients">
-        recipesWithExactIngredients
-      </li>
-    </ul>
+
+    <div *ngFor="let recipe of recipesWithAnyIngredients">
+      <h3>Titolo: {{recipe.title}}</h3>
+      <h4>Categoria: {{recipe.category}}</h4>
+      <h4>Istruzioni: {{recipe.instructions}}</h4>
+      <h4>Tempo di preparazione: {{recipe.prepTime}}</h4>
+      <h4>Tempo di cottura: {{recipe.cookTime}}</h4>
+      <h4>Per {{recipe.servings}} persone</h4>
+
+      <ul *ngFor="let ingredient of recipe.ingredients">
+        <li>Ingrediente: {{ingredient.name}} - {{ingredient.quantity}}</li>
+      </ul>
+    </div>
   </div>
 
   <!-- Visualizzazione delle ricette con almeno uno degli ingredienti specificati -->
   <div *ngIf="recipesWithAnyIngredients.length > 0">
     <h2>Ricette con almeno uno degli ingredienti specificati:</h2>
     <div *ngFor="let recipe of recipesWithAnyIngredients">
-      <h3>{{recipe.title}}</h3>
-      <ul>
-        <li>{{recipe.cookTime}}</li>
+      <h3>Titolo: {{recipe.title}}</h3>
+      <h4>Categoria: {{recipe.category}}</h4>
+      <h4>Istruzioni: {{recipe.instructions}}</h4>
+      <h4>Tempo di preparazione: {{recipe.prepTime}}</h4>
+      <h4>Tempo di cottura: {{recipe.cookTime}}</h4>
+      <h4>Per {{recipe.servings}} persone</h4>
+      <ul *ngFor="let ingredient of recipe.ingredients">
+        <li>Ingrediente: {{ingredient.name}} - {{ingredient.quantity}}</li>
       </ul>
     </div>
   </div>

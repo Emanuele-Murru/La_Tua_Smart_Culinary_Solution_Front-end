@@ -19,14 +19,16 @@
               <li>Quantity: {{ingredient.quantity}}</li>
             </ul>
           </div>
-          <button class="btn btn-danger" (click)="deleteRecipe(recipe.id!)">Delete</button>
-          <button class="btn btn-warning" (click)="updateRecipe(newRecipe)">Edit</button>
+          <button class="btn btn-danger" *ngIf="(showForms)" (click)="deleteRecipe(recipe.id!)">Delete</button>
+          <button class="btn btn-warning" *ngIf="(showForms)" (click)="updateRecipe(newRecipe.id!, newRecipe)">Edit</button>
         </div>
       </div>
     </div>
   </div>
 
-  <form *ngIf="(showForms)" (submit)="createRecipe()">
+  <div *ngIf="(showForms)">
+
+  <form (submit)="createRecipe()">
 
     <h2>Inserisci una nuova ricetta</h2>
 
@@ -83,7 +85,7 @@
     <div class="form-group">
       <label for="newIngredient">Crea un nuovo ingrediente qui sotto</label>
       <input type="text" class="form-control" [(ngModel)]="newIngredient.name" name="name"
-        placeholder="Ingredient name">
+        placeholder="Ingredient name" (input)=" newIngredient.name = formatInput(newIngredient.name)">
       <input type="text" class="form-control" [(ngModel)]="newIngredient.quantity" name="quantity"
         placeholder="Ingredient quantity">
       <button (click)="addIngredientToList()" class="btn btn-primary mt-3">Aggiungi ingrediente</button>
@@ -100,4 +102,5 @@
 
     </div>
   </form>
+  </div>
 </section>

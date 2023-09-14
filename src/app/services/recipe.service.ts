@@ -52,11 +52,11 @@ export class RecipeService {
     return this.http.post<Ingredient>(this.urlIngredients, ingredient, { headers });
   }
 
-  updateRecipe(recipe: Recipe): Observable<Recipe> {
+  updateRecipe(id:number, recipe: Recipe): Observable<Recipe> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${localStorage.getItem('token')}`
     });
-    const url = `${this.urlRecipes}/${recipe.id}`;
+    const url = `${this.urlRecipes}/${id}`;
     return this.http.put<Recipe>(url, recipe, { headers });
   }
 
