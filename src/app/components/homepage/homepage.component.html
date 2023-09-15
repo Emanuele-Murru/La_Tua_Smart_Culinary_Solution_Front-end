@@ -1,9 +1,14 @@
+  <!-- <video autoplay loop muted id="myVideo">
+        <source src="../../../assets/videos/603375_Stir Fry Flame Frying Pan Cooking_By_Phantom_Gravity_Artlist_HD(1).mp4" type="video/mp4">
+        Il tuo browser non supporta la riproduzione del video.
+      </video> -->
+
 <div class="container">
   <h1>Homepage</h1>
 
   <!-- Input per inserire gli ingredienti -->
   <div class="form-group">
-    <label for="ingredientInput">Inserisci gli ingredienti (separati da virgole o punti e virgola)</label>
+    <label for="ingredientInput">Inserisci gli ingredienti (separati da virgole o punto e virgola)</label>
     <input type="text" class="form-control" id="ingredientInput" [(ngModel)]="ingredientInput" (input)="ingredientInput = formatInput(ingredientInput)">
   </div>
 

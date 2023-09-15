@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 showButtonsLog: boolean = true;
+navEl = document.querySelector('.navbar');
 
   constructor(private authSrv: AuthService,private router: Router) { }
 
@@ -15,6 +16,22 @@ showButtonsLog: boolean = true;
     if(this.authSrv.isLoggedIn()){
       this.showButtonsLog = false;
     }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const navEl = document.getElementById('navEl');
+      if (!navEl) {
+        console.error("L'elemento con l'ID 'navEl' non è stato trovato.");
+        return;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY >= 1) {
+          navEl.classList.add('navbar-scroll');
+        } else if (window.scrollY < 56) {
+          navEl.classList.remove('navbar-scroll');
+        }
+      });
+    });
 
   }
 

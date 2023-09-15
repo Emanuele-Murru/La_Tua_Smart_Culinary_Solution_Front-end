@@ -14,6 +14,7 @@ import { AppService } from './services/app.service';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Route[] = [
   {
@@ -31,18 +32,17 @@ const routes: Route[] = [
   },
   {
     path: 'login',
-    component: LoginComponent,
-    // canActivate: [AuthGuard]
+    component: LoginComponent
   },
   {
     path: 'users',
     component: UsersComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'recipes',
     component: RecipesComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -76,6 +76,7 @@ const routes: Route[] = [
       useClass: TokenInterceptor,
       multi: true,
     },
+    AuthGuard
   ],
   bootstrap: [AppComponent],
 })
