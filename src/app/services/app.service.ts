@@ -8,7 +8,7 @@ import { map } from 'rxjs';
 })
 export class AppService {
 
-  private urlClienti = 'http://localhost:3001/clienti'; // Controlla l'URL del backend
+  private urlClienti = 'http://localhost:3001/clienti';
 
   constructor(private http: HttpClient) { }
 
@@ -43,53 +43,4 @@ export class AppService {
 //   });
 //   return this.http.post<Clienti>(this.urlClienti, cliente, { headers });
 // }
-
-// ------------------------------------------------------ Fattura
-
-private urlFattura = 'http://localhost:3001/fattura';
-
-// creaFattura(fattura: Fattura): Observable<Fattura>{
-//   const headers = new HttpHeaders({
-//     Authorization: `Bearer ${localStorage.getItem('token')}`
-//   });
-//   return this.http.post<Fattura>(this.urlFattura, fattura, { headers });
-//  }
-
-//  getFatture(page: number, order: string): Observable<Fattura[]> {
-//    const params = new HttpParams()
-//    .set('page', page.toString())
-//    .set('order', order);
-
-//    const headers = new HttpHeaders({
-//      Authorization: `Bearer ${localStorage.getItem('token')}`
-//     });
-//     console.log(page, order);
-
-//     return this.http.get<any>(this.urlFattura, { params, headers })
-//     .pipe(map(response => response.content));
-//   }
-
-//   getFatturaById(fattura: string): Observable<Fattura> {
-//     const url = `${this.urlFattura}/${fattura}`;
-//     const headers = new HttpHeaders({
-//       Authorization: `Bearer ${localStorage.getItem('token')}`
-//     });
-//     return this.http.get<Fattura>(url, { headers });
-//   }
-
 }
-//   //CHIAMATA POST PER METTERE FILM NEI PREFERITI
-//   aggiungiFavorites(data: Favorites) {
-//     return this.http.post<Favorites>('http://localhost:4201/favorites', data);
-//   }
-//   // CHIAMATA DELETE PER ELEMINARE FILM DAI PREFERITI
-//   eliminaFavorites(favoriteID: number) {
-//     return this.http.delete(`http://localhost:4201/favorites/${favoriteID}`);
-//   }
-// //CHIAMATA GET PER INFO FILM SPECIFICO
-//   getFilmById(id: number) {
-//     return this.http.get<Movies[]>(`http://localhost:4201/movies-popular/${id}`);
-//   }
-
-
-

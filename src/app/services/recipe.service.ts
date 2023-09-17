@@ -15,7 +15,6 @@ export class RecipeService {
 
   constructor(private http: HttpClient) {}
 
-
   getRecipes(page: number, order: string): Observable<Recipe[]> {
     const params = new HttpParams()
     .set('page', page.toString())
@@ -60,7 +59,6 @@ export class RecipeService {
     return this.http.put<Recipe>(url, recipe, { headers });
   }
 
-
   deleteRecipe(recipeId: number): Observable<void> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -74,4 +72,3 @@ export class RecipeService {
     return this.http.get<Recipe[]>(`${this.urlRecipes}/search`, { params });
   }
 }
-

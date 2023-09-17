@@ -1,5 +1,5 @@
-<video autoplay loop muted id="myVideo">
-  <source src="../../../assets/videos/603375_Stir Fry Flame Frying Pan Cooking_By_Phantom_Gravity_Artlist_HD(1).mp4" type="video/mp4">
+<video autoplay muted loop id="myVideo">
+  <source src="../../../../assets/videos/CookingVideo.mp4" type="video/mp4">
   Il tuo browser non supporta la riproduzione del video.
 </video>
 <!-- <img src="../../../../assets/img/todd-quackenbush-x5SRhkFajrA-unsplash.jpg" alt=""> -->
@@ -23,18 +23,9 @@
         </div>
         <div class="navbar-nav" style=" margin-left:auto;">
         <a class="m-1" (click)="logOut()" *ngIf="!showButtonsLog"><button  id="logoutBtn" class="btn border border-2 border-black" type="button">Logout</button></a>
-        <a href="/login" class="m-1" *ngIf="showButtonsLog"><button class="btn btn-primary">Login</button></a>
-        <a href="/register" class="m-1" *ngIf="showButtonsLog"><button class="btn btn-light">Register</button></a>
+        <a href="/login" class="m-1" *ngIf="showButtonsLog"><button id="loginBtn" class="btn btn-light">Login</button></a>
+        <a href="/register" class="m-1" *ngIf="showButtonsLog"><button id="registerBtn" class="btn btn-light">Register</button></a>
       </div>
        </div>
     </div>
   </nav>
-
-<header>
-    <div id="background-video-container">
-      <!-- <video autoplay loop muted>
-        <source src="../../../../assets/videos/603375_Stir Fry Flame Frying Pan Cooking_By_Phantom_Gravity_Artlist_HD(1).mp4" type="video/mp4">
-        Il tuo browser non supporta la riproduzione del video.
-      </video> -->
-    </div>
-</header>

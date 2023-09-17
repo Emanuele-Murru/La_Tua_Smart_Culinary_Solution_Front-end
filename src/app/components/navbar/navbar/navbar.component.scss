@@ -28,6 +28,56 @@
   transform: translateY(-1px);
 }
 
+#registerBtn {
+  padding: 0.1em 1.3em;
+  font-family: 'Mooli', sans-serif;
+  font-size: 1.35em;
+  color: #000;
+  background-color: #F5F5DC;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+#registerBtn:hover {
+  background-color: #A91101;
+  box-shadow: 0px 15px 20px rgba(236, 13, 13, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+#registerBtn:active {
+  transform: translateY(-1px);
+}
+
+#loginBtn {
+  padding: 0.1em 1.3em;
+  font-family: 'Mooli', sans-serif;
+  font-size: 1.35em;
+  color: #000;
+  background-color: #F5F5DC;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+#loginBtn:hover {
+  background-color: #A91101;
+  box-shadow: 0px 15px 20px rgba(236, 13, 13, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+#loginBtn:active {
+  transform: translateY(-1px);
+}
+
 #myVideo {
   // position: absolute;
   // top: 0;
@@ -40,19 +90,18 @@
 }
 
 .navbar {
-  transition: all 0.5s;
-  padding: 2px;
+  transition: all 0.8s;
 }
 
 .navbar-scroll {
   background-color: #F5F5DC;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
 }
 
-#navEl {
-  padding: 0px 6px;
+// #navEl {
+//   padding: 0px 6px;
 
-  a {
-    padding: 5px;
-  }
-}
+//   a {
+//     padding: 5px;
+//   }
+// }

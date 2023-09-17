@@ -39,6 +39,7 @@ export class HomepageComponent implements OnInit {
     const ingredients = this.ingredientInput
       .split(/[,;]/)
       .map((ingredient) => ingredient.trim());
+    console.log('Mapped and trimmed: ', ingredients);
 
     this.recipeService
       .searchRecipesByIngredients(ingredients)
@@ -46,13 +47,14 @@ export class HomepageComponent implements OnInit {
         // Filtra le ricette con esattamente quegli ingredienti specificati
         console.log(`Risposta dal db:${recipes}`);
 
-        this.recipesWithExactIngredients = recipes.filter((recipe) =>
-          ingredients.every((ingredient) =>
-            recipe.ingredients.some(
-              (rIngredient) =>
-                rIngredient.name.toLowerCase() === ingredient.toLowerCase()
-            )
-          )
+        this.recipesWithExactIngredients = recipes.filter(
+          (recipe) =>
+            ingredients.every((ingredient) =>
+              recipe.ingredients.some(
+                (rIngredient) =>
+                  rIngredient.name.toLowerCase() === ingredient.toLowerCase()
+              )
+            ) && ingredients.length === recipe.ingredients.length // Assicurati che tutte le parole chiave siano soddisfatte
         );
         console.log(this.recipesWithExactIngredients);
 
@@ -67,7 +69,7 @@ export class HomepageComponent implements OnInit {
         );
       });
   }
-// Metodo per uppercase prima lettera
+  // Metodo per uppercase prima lettera
   formatInput(text: string) {
     return text.charAt(0).toUpperCase() + text.slice(1);
   }

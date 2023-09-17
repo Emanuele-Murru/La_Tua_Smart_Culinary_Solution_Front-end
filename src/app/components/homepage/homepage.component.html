@@ -9,11 +9,11 @@
   <!-- Input per inserire gli ingredienti -->
   <div class="form-group">
     <label for="ingredientInput">Inserisci gli ingredienti (separati da virgole o punto e virgola)</label>
-    <input type="text" class="form-control" id="ingredientInput" [(ngModel)]="ingredientInput" (input)="ingredientInput = formatInput(ingredientInput)">
+    <input type="text" class="form-control" id="ingredientInput" [(ngModel)]="ingredientInput" (input)="ingredientInput = formatInput(ingredientInput)" >
   </div>
 
   <!-- Bottone per avviare la ricerca -->
-  <button class="btn btn-primary" (click)="searchRecipes()">
+  <button class="btn btn-primary" type="button" (click)="searchRecipes()">
     Cerca Ricette
   </button>
 
@@ -22,7 +22,7 @@
 
     <h2>Ricette con gli ingredienti specificati:</h2>
 
-    <div *ngFor="let recipe of recipesWithAnyIngredients">
+    <div *ngFor="let recipe of recipesWithExactIngredients">
       <h3>Titolo: {{recipe.title}}</h3>
       <h4>Categoria: {{recipe.category}}</h4>
       <h4>Istruzioni: {{recipe.instructions}}</h4>
