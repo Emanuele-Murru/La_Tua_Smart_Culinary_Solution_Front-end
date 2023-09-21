@@ -1,5 +1,4 @@
-import { APP_BOOTSTRAP_LISTENER, Component, OnInit } from '@angular/core';
-import { bootstrapApplication } from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/models/recipe.interface';
 import { RecipeService } from 'src/app/services/recipe.service';
 
@@ -10,6 +9,8 @@ import { RecipeService } from 'src/app/services/recipe.service';
 })
 
 export class HomepageComponent implements OnInit {
+  showModal: boolean = false;
+
   recipes: Recipe[] = [];
   allRecipes: Recipe[] = [];
   recipesWithExactIngredients: Recipe[] = [];
@@ -43,7 +44,6 @@ export class HomepageComponent implements OnInit {
     this.recipeService
       .searchRecipesByIngredients(ingredients)
       .subscribe((recipes) => {
-
         this.recipesWithExactIngredients = recipes.filter(
           (recipe) =>
             ingredients.every((ingredient) =>
@@ -63,7 +63,17 @@ export class HomepageComponent implements OnInit {
           )
         );
       });
-      this.ingredientsList = [];
+      if (this.recipesWithExactIngredients.length === 0 && this.recipesWithAnyIngredients.length === 0) {
+        this.showNoIngredientModal();
+      }
+    this.ingredientsList = [];
+  }
+
+  showNoIngredientModal() {
+    const modal:any = document.querySelector('#noIngredientModal');
+    if(modal) {
+      modal.show();
+    }
   }
 
   addIngredient(event: Event) {
@@ -73,15 +83,14 @@ export class HomepageComponent implements OnInit {
       this.currentIngredient = "";
     }
   }
+
   removeIngredient(index: number) {
     if (index >= 0 && index < this.ingredientsList.length) {
       this.ingredientsList.splice(index, 1);
     }
   }
 
-  // Metodo per uppercase prima lettera
   formatInput(text: string) {
     return text.charAt(0).toUpperCase() + text.slice(1);
   }
-
 }

@@ -21,6 +21,7 @@ export class RecipesComponent implements OnInit {
     prepTime: '',
     cookTime: '',
     servings: null!,
+    imageUrl: '',
     ingredients: [],
   };
 
@@ -99,6 +100,7 @@ export class RecipesComponent implements OnInit {
       prepTime: this.newRecipe.prepTime,
       cookTime: this.newRecipe.cookTime,
       servings: this.newRecipe.servings,
+      imageUrl: this.newRecipe.imageUrl,
       ingredients: this.selectedIngredients,
     };
 
@@ -113,6 +115,7 @@ export class RecipesComponent implements OnInit {
           prepTime: '',
           cookTime: '',
           servings: null!,
+          imageUrl: '',
           ingredients: [],
         };
         this.selectedIngredients = [];
@@ -149,6 +152,7 @@ export class RecipesComponent implements OnInit {
       prepTime: this.newRecipe.prepTime,
       cookTime: this.newRecipe.cookTime,
       servings: this.newRecipe.servings,
+      imageUrl: this.newRecipe.imageUrl,
       ingredients: this.selectedIngredients,
     };
 
