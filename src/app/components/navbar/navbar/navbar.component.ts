@@ -4,16 +4,27 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-showButtonsLog: boolean = true;
-navEl = document.querySelector('.navbar');
+  showButtonsLog: boolean = true;
+  isHomepage: boolean = false;
+  navEl = document.querySelector('.navbar');
 
-  constructor(private authSrv: AuthService,private router: Router) { }
+  constructor(private authSrv: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    if(this.authSrv.isLoggedIn()){
+
+    setTimeout(() => {
+
+      if (this.router.url === '/homepage') {
+        this.isHomepage = true;
+      } else {
+        this.isHomepage = false;
+      }
+    }, 10)
+
+    if (this.authSrv.isLoggedIn()) {
       this.showButtonsLog = false;
     }
 
@@ -32,12 +43,11 @@ navEl = document.querySelector('.navbar');
         }
       });
     });
-
   }
 
   logOut() {
     this.authSrv.logout();
     this.router.navigate(['/login']);
-    console.log("logout effettuato con successo");
-}
+    console.log('logout effettuato con successo');
+  }
 }

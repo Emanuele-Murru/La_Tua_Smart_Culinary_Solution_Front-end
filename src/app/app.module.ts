@@ -10,11 +10,11 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar/navbar.component';
 import { UsersComponent } from './components/user/users/users.component';
-import { AppService } from './services/app.service';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { AuthGuard } from './auth/auth.guard';
+import { DetailPageComponent } from './components/detail-page/detail-page.component';
 
 const routes: Route[] = [
   {
@@ -43,6 +43,11 @@ const routes: Route[] = [
     path: 'recipes',
     component: RecipesComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'recipes/detail-page/:id',
+    component: DetailPageComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -55,6 +60,7 @@ const routes: Route[] = [
     RegisterComponent,
     RecipesComponent,
     HomepageComponent,
+    DetailPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +76,6 @@ const routes: Route[] = [
     }),
   ],
   providers: [
-    AppService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

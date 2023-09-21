@@ -77,7 +77,7 @@ export class RecipesComponent implements OnInit {
         quantity: this.newIngredient.quantity,
       };
 
-      // Aggiungi l'ingrediente alla lista degli ingredienti selezionati
+      // Aggiungo l'ingrediente alla lista degli ingredienti selezionati
       this.selectedIngredients.push(newIngredient);
 
       // Pulisci i campi dell'ingrediente appena aggiunto
@@ -86,7 +86,6 @@ export class RecipesComponent implements OnInit {
         quantity: '',
       };
     } else {
-      // Messaggio di errore o gestione degli errori se il nome dell'ingrediente è mancante
       console.error('Nome ingrediente obbligatorio.');
     }
   }
@@ -116,9 +115,7 @@ export class RecipesComponent implements OnInit {
           servings: null!,
           ingredients: [],
         };
-        // Resetta l'elenco degli ingredienti selezionati
         this.selectedIngredients = [];
-        // Ricarica la lista delle ricette dopo la creazione
         this.loadRecipes();
       },
       (error) => {
@@ -128,13 +125,11 @@ export class RecipesComponent implements OnInit {
   }
 
   createIngredient() {
-    // Creazione di un nuovo ingrediente
     this.RecipeService.createIngredient(this.newIngredient).subscribe(
       (ingredientCreated: Ingredient) => {
         console.log('Ingredient created:', ingredientCreated);
-        // Aggiungi l'ingrediente creato all'elenco degli ingredienti selezionati
+        // Aggiungo l'ingrediente creato all'elenco degli ingredienti selezionati
         this.selectedIngredients.push(ingredientCreated);
-        // Resetta i campi dell'ingrediente appena creato
         this.newIngredient = {
           name: '',
           quantity: '',
@@ -160,7 +155,6 @@ export class RecipesComponent implements OnInit {
     this.RecipeService.updateRecipe(id, updatedRecipe).subscribe(
       (updatedRecipeResponse: Recipe) => {
         console.log('Ricetta aggiornata:', updatedRecipeResponse);
-        // Esegui qualsiasi azione aggiuntiva necessaria dopo l'aggiornamento
       },
       (error) => {
         console.error("Errore durante l'aggiornamento della ricetta:", error);
@@ -172,7 +166,6 @@ export class RecipesComponent implements OnInit {
     this.RecipeService.deleteRecipe(recipeId).subscribe(
       () => {
         console.log(`Ricetta con ID ${recipeId} cancellata con successo`);
-        // Puoi aggiornare la lista delle ricette dopo la cancellazione
         this.loadRecipes();
       },
       (error) => {

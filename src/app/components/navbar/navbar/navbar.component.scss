@@ -1,6 +1,21 @@
 #navText {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 40px;
+  margin: 0;
+}
+
+.navbar {
+  transition: all 0.8s;
+}
+
+// .navbar .navbar-collapse {
+//   background-color: #F5F5DC;
+//   border-radius: 25px;
+// }
+
+.navbar-scroll {
+  background-color: #F5F5DC;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
 }
 
 #logoutBtn {
@@ -77,31 +92,3 @@
 #loginBtn:active {
   transform: translateY(-1px);
 }
-
-#myVideo {
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-  min-width: 100%;
-  min-height: 50%;
-  width: 100%;
-  z-index: -1;
-  filter: brightness(1);
-}
-
-.navbar {
-  transition: all 0.8s;
-}
-
-.navbar-scroll {
-  background-color: #F5F5DC;
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
-}
-
-// #navEl {
-//   padding: 0px 6px;
-
-//   a {
-//     padding: 5px;
-//   }
-// }

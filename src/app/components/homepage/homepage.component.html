@@ -1,23 +1,49 @@
-  <!-- <video autoplay loop muted id="myVideo">
-        <source src="../../../assets/videos/603375_Stir Fry Flame Frying Pan Cooking_By_Phantom_Gravity_Artlist_HD(1).mp4" type="video/mp4">
+  <video autoplay loop muted id="myVideo">
+        <source src="../../../assets/videos/CookingVideo.mp4" type="video/mp4">
         Il tuo browser non supporta la riproduzione del video.
-      </video> -->
+      </video>
 
 <div class="container">
   <h1>Homepage</h1>
 
-  <!-- Input per inserire gli ingredienti -->
   <div class="form-group">
-    <label for="ingredientInput">Inserisci gli ingredienti (separati da virgole o punto e virgola)</label>
-    <input type="text" class="form-control" id="ingredientInput" [(ngModel)]="ingredientInput" (input)="ingredientInput = formatInput(ingredientInput)" >
+    <label for="ingredientInput">Inserisci gli ingredienti</label>
+    <input type="text" class="form-control" id="ingredientInput" [(ngModel)]="currentIngredient" (input)="currentIngredient = formatInput(currentIngredient)" (keydown.enter)="addIngredient($event)">
+    <button class="btn btn-primary my-2" type="button" (click)="addIngredient($event)">Aggiungi</button>
   </div>
 
-  <!-- Bottone per avviare la ricerca -->
-  <button class="btn btn-primary" type="button" (click)="searchRecipes()">
+  <!-- Lista degli ingredienti aggiunti -->
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let ingredient of ingredientsList; let i = index">
+      {{ ingredient }}
+      <button class="btn btn-danger btn-sm float-end" (click)="removeIngredient(i)">Rimuovi</button>
+    </li>
+  </ul>
+
+
+  <button class="btn btn-primary my-4" type="button" (click)="searchRecipes()">
     Cerca Ricette
   </button>
 
-  <!-- Visualizzazione delle ricette con esattamente quegli ingredienti -->
+  <div class="modal fade" id="noIngredientModal" tabindex="-1" aria-labelledby="noIngredientModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="noIngredientModalLabel">Mi dispiace!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="../../../../src/assets/img/IMG_9533.JPG" alt="Nessun ingrediente trovato" class="img-fluid">
+          <p>Nessun ingrediente trovato!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div *ngIf="recipesWithExactIngredients.length > 0">
 
     <h2>Ricette con gli ingredienti specificati:</h2>
@@ -36,7 +62,6 @@
     </div>
   </div>
 
-  <!-- Visualizzazione delle ricette con almeno uno degli ingredienti specificati -->
   <div *ngIf="recipesWithAnyIngredients.length > 0">
     <h2>Ricette con almeno uno degli ingredienti specificati:</h2>
     <div *ngFor="let recipe of recipesWithAnyIngredients">

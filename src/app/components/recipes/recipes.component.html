@@ -1,26 +1,46 @@
-<section class="container-fluid recipeComponent">
-  <div *ngFor="let recipe of recipes">
+<div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div *ngFor="let recipe of recipes; let i = index" class="carousel-item" id="carouselItem" [class.active]="i === 0">
+      <img class="d-block w-100" src="https://source.unsplash.com/Zh0mYmMBZjQ/600x600" alt="{{ recipe.title }}">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>{{ recipe.title }}</h3>
+        <p>{{ recipe.category }}</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#recipeCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#recipeCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="https://source.unsplash.com/Zh0mYmMBZjQ/600x600" class="img-fluid rounded" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Title: {{recipe.title}}</h5>
-            <span>Category: {{recipe.category}}</span>
-            <p class="card-text">Instructions: {{recipe.instructions}}</p>
-            <p class="card-text">Preparation time: {{recipe.prepTime}}</p>
-            <p class="card-text">Cooking time: {{recipe.cookTime}}</p>
-            <p class="card-text"><small class="text-body-secondary">Servings: {{recipe.servings}}</small></p>
-            <ul *ngFor="let ingredient of recipe.ingredients">
-              <li>Ingredient: {{ingredient.name}}</li>
-              <li>Quantity: {{ingredient.quantity}}</li>
-            </ul>
+<section class="container-fluid">
+
+  <div class="row">
+
+    <div *ngFor="let recipe of recipes" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center">
+      <div class="card my-4">
+          <div>
+            <img src="https://source.unsplash.com/Zh0mYmMBZjQ/750x750" class="img-fluid rounded" alt="...">
+          <div>
+            <div class="card-body">
+              <h5 class="card-title">Title: {{recipe.title}}</h5>
+              <span>Category: {{recipe.category}}</span>
+              <p class="card-text">Preparation time: {{recipe.prepTime}}</p>
+              <p class="card-text">Cooking time: {{recipe.cookTime}}</p>
+              <p class="card-text"><small class="text-body-secondary">Servings: {{recipe.servings}}</small></p>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-danger m-2" *ngIf="(showForms)" (click)="deleteRecipe(recipe.id!)">Delete</button>
+              <button class="btn btn-warning m-2" *ngIf="(showForms)"
+                (click)="updateRecipe(newRecipe.id!, newRecipe)">Edit</button>
+              <a routerLink='detail-page/{{recipe.id}}' type="button" class="btn btn-primary m-2"> See more</a>
+            </div>
           </div>
-          <button class="btn btn-danger" *ngIf="(showForms)" (click)="deleteRecipe(recipe.id!)">Delete</button>
-          <button class="btn btn-warning" *ngIf="(showForms)" (click)="updateRecipe(newRecipe.id!, newRecipe)">Edit</button>
         </div>
       </div>
     </div>
@@ -28,79 +48,93 @@
 
   <div *ngIf="(showForms)">
 
-  <form (submit)="createRecipe()">
+    <form (submit)="createRecipe()">
 
-    <h2>Inserisci una nuova ricetta</h2>
+      <h2>Inserisci una nuova ricetta</h2>
 
-    <div class="form-group">
-      <label for="Title">Title</label>
-      <input type="text" class="form-control" id="title" [(ngModel)]="newRecipe.title" name="title" required>
-    </div>
+      <div class="form-group">
+        <label for="Title">Title</label>
+        <input type="text" class="form-control" id="title" [(ngModel)]="newRecipe.title" name="title" required>
+      </div>
 
-    <div class="form-group">
-      <label for="Category">Category</label>
-      <input type="text" class="form-control" id="category" [(ngModel)]="newRecipe.category" name="category" required>
-    </div>
+      <div class="form-group">
+        <label for="Category">Category</label>
+        <input type="text" class="form-control" id="category" [(ngModel)]="newRecipe.category" name="category" required>
+      </div>
 
-    <div class="form-group">
-      <label for="Instructions">Instructions</label>
-      <input type="text" class="form-control" id="instructions" [(ngModel)]="newRecipe.instructions" name="instructions"
-        required>
-    </div>
+      <div class="form-group">
+        <label for="Instructions">Instructions</label>
+        <input type="text" class="form-control" id="instructions" [(ngModel)]="newRecipe.instructions"
+          name="instructions" required>
+      </div>
 
-    <div class="form-group">
-      <label for="PrepTime">Preparation time</label>
-      <input type="text" class="form-control" id="prepTime" [(ngModel)]="newRecipe.prepTime" name="prepTime" required>
-    </div>
+      <div class="form-group">
+        <label for="PrepTime">Preparation time</label>
+        <input type="text" class="form-control" id="prepTime" [(ngModel)]="newRecipe.prepTime" name="prepTime" required>
+      </div>
 
-    <div class="form-group">
-      <label for="CookTime">Cooking time</label>
-      <input type="text" class="form-control" id="cookTime" [(ngModel)]="newRecipe.cookTime" name="cookTime" required>
-    </div>
+      <div class="form-group">
+        <label for="CookTime">Cooking time</label>
+        <input type="text" class="form-control" id="cookTime" [(ngModel)]="newRecipe.cookTime" name="cookTime" required>
+      </div>
 
-    <div class="form-group">
-      <label for="Servings">Servings</label>
-      <input type="text" class="form-control" id="servings" [(ngModel)]="newRecipe.servings" name="servings" required>
-    </div>
+      <div class="form-group">
+        <label for="Servings">Servings</label>
+        <input type="text" class="form-control" id="servings" [(ngModel)]="newRecipe.servings" name="servings" required>
+      </div>
 
-    <div class="form-group">
-      <label for="Ingredients">Ingredients</label>
-      <select class="form-control" [(ngModel)]="selectedIngredients" name="selectedIngredient" multiple>
-        <option *ngFor="let ingredient of ingredients" [value]="ingredient">{{ ingredient.name }}</option>
-      </select>
-    </div>
+      <div class="form-group">
+        <label for="Ingredients">Ingredients</label>
+        <select class="form-control" [(ngModel)]="selectedIngredients" name="selectedIngredient" multiple>
+          <option *ngFor="let ingredient of ingredients" [value]="ingredient">{{ ingredient.name }}</option>
+        </select>
+      </div>
 
+      <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Salva</button>
+        <button type="button" class="btn btn-secondary">Annulla</button>
+      </div>
+    </form>
 
-
-    <div class="mt-3">
-      <button type="submit" class="btn btn-primary">Salva</button>
-      <button type="button" class="btn btn-secondary">Annulla</button>
-    </div>
-  </form>
-
-  <hr>
-
-  <!-- Form per creare un nuovo ingrediente -->
-  <form>
-    <div class="form-group">
-      <label for="newIngredient">Crea un nuovo ingrediente qui sotto</label>
-      <input type="text" class="form-control" [(ngModel)]="newIngredient.name" name="name"
-        placeholder="Ingredient name" (input)=" newIngredient.name = formatInput(newIngredient.name)">
-      <input type="text" class="form-control" [(ngModel)]="newIngredient.quantity" name="quantity"
-        placeholder="Ingredient quantity">
-      <button (click)="addIngredientToList()" class="btn btn-primary mt-3">Aggiungi ingrediente</button>
-    </div>
-    <!-- Elenco degli ingredienti aggiunti -->
     <hr>
-    <div>
-      <h4>Ingredienti aggiunti:</h4>
-      <ul>
-        <li *ngFor="let ingredient of selectedIngredients"> {{ ingredient.name }} - {{ ingredient.quantity }}
-          <button class="btn btn-danger" (click)="removeIngredient(ingredient)">Rimuovi</button>
-        </li>
-      </ul>
 
-    </div>
-  </form>
+    <!-- Form per creare un nuovo ingrediente -->
+    <form>
+      <div class="form-group">
+        <label for="newIngredient">Crea un nuovo ingrediente qui sotto</label>
+        <input type="text" class="form-control" [(ngModel)]="newIngredient.name" name="name"
+          placeholder="Ingredient name" (input)=" newIngredient.name = formatInput(newIngredient.name)">
+        <input type="text" class="form-control" [(ngModel)]="newIngredient.quantity" name="quantity"
+          placeholder="Ingredient quantity">
+        <button (click)="addIngredientToList()" class="btn btn-primary mt-3">Aggiungi ingrediente</button>
+      </div>
+      <!-- Elenco degli ingredienti aggiunti -->
+      <hr>
+      <div>
+        <h4>Ingredienti aggiunti:</h4>
+        <ul>
+          <li *ngFor="let ingredient of selectedIngredients"> {{ ingredient.name }} - {{ ingredient.quantity }}
+            <button class="btn btn-danger" (click)="removeIngredient(ingredient)">Rimuovi</button>
+          </li>
+        </ul>
+
+      </div>
+    </form>
   </div>
+
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item disabled">
+        <a class="page-link">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
 </section>

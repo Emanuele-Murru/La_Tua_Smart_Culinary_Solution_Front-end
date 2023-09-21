@@ -1,0 +1,45 @@
+<div class="container-fluid contenitore">
+  <div class="content" *ngIf="recipe">
+    <div class="row justify-content-between">
+      <div class="col-md-5">
+        <img src="https://source.unsplash.com/Zh0mYmMBZjQ/600x600" class="img-fluid rounded" alt="..." />
+      </div>
+
+      <div class="col-md-7">
+        <div class="card-body text-start">
+          <h1 class="card-title mt-4">Titolo: {{ recipe.title }}</h1>
+          <h3 class="mt-3">Categoria: <span>{{ recipe.category }}</span></h3>
+
+          <div class="flex-row d-flex text-center mt-5">
+
+            <div class="col-md-4 border-end border-2">
+              <i class="bi bi-clock"></i>
+              <h5>Tempo di preparazione: </h5>
+              <span class="card-text">{{ recipe.prepTime }}</span>
+            </div>
+
+            <div class="col-md-4 rectangles">
+              <i class="bi bi-clock"></i>
+              <h5>Tempo di cottura:</h5>
+              <span class="card-text">{{ recipe.cookTime }}</span>
+            </div>
+
+            <div class="col-md-4 border-start border-2 rectangles">
+              <i class="bi bi-people-fill"></i>
+              <h5>Porzioni:</h5>
+              <span class="card-text">{{ recipe.servings }}</span>
+            </div>
+
+          </div>
+
+          <hr class="hr">
+
+          <!--
+        <ul *ngFor="let ingredient of recipe.ingredients">
+          <li>Ingredient: {{ingredient.name}}</li>
+          <li>Quantity: {{ingredient.quantity}}</li>
+        </ul> -->
+        </div>
+      </div>
+    </div>
+  </div>

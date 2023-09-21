@@ -67,6 +67,10 @@ export class RecipeService {
     return this.http.delete<void>(url, { headers });
   }
 
+  getRecipeById(recipeId: number) {
+    return this.http.get<Recipe>(`${this.urlRecipes}/${recipeId}`);
+  }
+
   searchRecipesByIngredients(ingredients: string[]): Observable<Recipe[]> {
     const params = new HttpParams().set('ingredients', ingredients.join(','));
     return this.http.get<Recipe[]>(`${this.urlRecipes}/search`, { params });
