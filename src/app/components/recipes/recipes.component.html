@@ -2,7 +2,7 @@
   <div class="carousel-inner">
     <div *ngFor="let recipe of recipes; let i = index" class="carousel-item" id="carouselItem" [class.active]="i === 0">
       <img class="d-block w-100" src="https://source.unsplash.com/Zh0mYmMBZjQ/600x600" alt="{{ recipe.title }}">
-      <div class="carousel-caption d-none d-md-block">
+      <div class="carousel-caption">
         <h3>{{ recipe.title }}</h3>
         <p>{{ recipe.category }}</p>
       </div>
@@ -25,20 +25,20 @@
     <div *ngFor="let recipe of recipes" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center">
       <div class="card my-4">
           <div>
-            <img src="https://source.unsplash.com/Zh0mYmMBZjQ/750x750" class="img-fluid rounded" alt="...">
+            <img src="{{recipe.imageUrl}}" class="img-fluid rounded" alt="...">
           <div>
             <div class="card-body">
-              <h5 class="card-title">Title: {{recipe.title}}</h5>
-              <span>Category: {{recipe.category}}</span>
-              <p class="card-text">Preparation time: {{recipe.prepTime}}</p>
-              <p class="card-text">Cooking time: {{recipe.cookTime}}</p>
-              <p class="card-text"><small class="text-body-secondary">Servings: {{recipe.servings}}</small></p>
+              <h5 class="card-title">Titolo: {{recipe.title}}</h5>
+              <span>Categoria: {{recipe.category}}</span>
+              <p class="card-text">Tempo di preparazione: {{recipe.prepTime}}</p>
+              <p class="card-text">Tempo di cottura: {{recipe.cookTime}}</p>
+              <p class="card-text"><small class="text-body-secondary">Portate: {{recipe.servings}}</small></p>
             </div>
             <div class="text-center">
-              <button class="btn btn-danger m-2" *ngIf="(showForms)" (click)="deleteRecipe(recipe.id!)">Delete</button>
+              <button class="btn btn-danger m-2" *ngIf="(showForms)" (click)="deleteRecipe(recipe.id!)">Cancella</button>
               <button class="btn btn-warning m-2" *ngIf="(showForms)"
-                (click)="updateRecipe(newRecipe.id!, newRecipe)">Edit</button>
-              <a routerLink='detail-page/{{recipe.id}}' type="button" class="btn btn-primary m-2"> See more</a>
+                (click)="updateRecipe(newRecipe.id!, newRecipe)">Modifica</button>
+              <a routerLink='detail-page/{{recipe.id}}' type="button" class="btn btn-primary m-2">Info</a>
             </div>
           </div>
         </div>
@@ -53,38 +53,44 @@
       <h2>Inserisci una nuova ricetta</h2>
 
       <div class="form-group">
-        <label for="Title">Title</label>
+        <label for="Title">Titolo</label>
         <input type="text" class="form-control" id="title" [(ngModel)]="newRecipe.title" name="title" required>
       </div>
 
       <div class="form-group">
-        <label for="Category">Category</label>
-        <input type="text" class="form-control" id="category" [(ngModel)]="newRecipe.category" name="category" required>
+        <label for="category">Categoria</label>
+        <select class="form-control" id="category" [(ngModel)]="newRecipe.category" name="category" required>
+          <option value="ANTIPASTI">ANTIPASTI</option>
+          <option value="PRIMI">PRIMI</option>
+          <option value="SECONDI">SECONDI</option>
+          <option value="CONTORNI">CONTORNI</option>
+          <option value="DESSERTS">DESSERTS</option>
+        </select>
       </div>
 
       <div class="form-group">
-        <label for="Instructions">Instructions</label>
+        <label for="Instructions">Istruzioni</label>
         <input type="text" class="form-control" id="instructions" [(ngModel)]="newRecipe.instructions"
           name="instructions" required>
       </div>
 
       <div class="form-group">
-        <label for="PrepTime">Preparation time</label>
+        <label for="PrepTime">Tempo di preparazione</label>
         <input type="text" class="form-control" id="prepTime" [(ngModel)]="newRecipe.prepTime" name="prepTime" required>
       </div>
 
       <div class="form-group">
-        <label for="CookTime">Cooking time</label>
+        <label for="CookTime">Tempo di cottura</label>
         <input type="text" class="form-control" id="cookTime" [(ngModel)]="newRecipe.cookTime" name="cookTime" required>
       </div>
 
       <div class="form-group">
-        <label for="Servings">Servings</label>
+        <label for="Servings">Portate</label>
         <input type="text" class="form-control" id="servings" [(ngModel)]="newRecipe.servings" name="servings" required>
       </div>
 
       <div class="form-group">
-        <label for="Ingredients">Ingredients</label>
+        <label for="Ingredients">Ingredienti</label>
         <select class="form-control" [(ngModel)]="selectedIngredients" name="selectedIngredient" multiple>
           <option *ngFor="let ingredient of ingredients" [value]="ingredient">{{ ingredient.name }}</option>
         </select>
@@ -103,9 +109,9 @@
       <div class="form-group">
         <label for="newIngredient">Crea un nuovo ingrediente qui sotto</label>
         <input type="text" class="form-control" [(ngModel)]="newIngredient.name" name="name"
-          placeholder="Ingredient name" (input)=" newIngredient.name = formatInput(newIngredient.name)">
+          placeholder="Nome ingrediente" (input)=" newIngredient.name = formatInput(newIngredient.name)">
         <input type="text" class="form-control" [(ngModel)]="newIngredient.quantity" name="quantity"
-          placeholder="Ingredient quantity">
+          placeholder="Quantità ingrediente">
         <button (click)="addIngredientToList()" class="btn btn-primary mt-3">Aggiungi ingrediente</button>
       </div>
       <!-- Elenco degli ingredienti aggiunti -->
@@ -125,7 +131,7 @@
   <nav aria-label="...">
     <ul class="pagination">
       <li class="page-item disabled">
-        <a class="page-link">Previous</a>
+        <a class="page-link">Precedente</a>
       </li>
       <li class="page-item"><a class="page-link" href="#">1</a></li>
       <li class="page-item active" aria-current="page">
@@ -133,7 +139,7 @@
       </li>
       <li class="page-item"><a class="page-link" href="#">3</a></li>
       <li class="page-item">
-        <a class="page-link" href="#">Next</a>
+        <a class="page-link" href="#">Prossima</a>
       </li>
     </ul>
   </nav>
