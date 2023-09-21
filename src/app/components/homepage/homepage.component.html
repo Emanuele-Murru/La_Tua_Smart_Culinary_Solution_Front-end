@@ -29,11 +29,11 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="noIngredientModalLabel">Mi dispiace!</h5>
+          <h5 class="modal-title" id="noIngredientModalLabel">Mi spiace!</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-center">
-          <img src="../../../../src/assets/img/IMG_9533.JPG" alt="Nessun ingrediente trovato" class="img-fluid">
+          <img src="../../../../assets/img/IMG_9533.JPG" alt="Nessun ingrediente trovato" class="img-fluid">
           <p>Nessun ingrediente trovato!</p>
         </div>
         <div class="modal-footer">
@@ -43,6 +43,7 @@
     </div>
   </div>
 
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#noIngredientModal">Modal</button>
 
   <div *ngIf="recipesWithExactIngredients.length > 0">
 
