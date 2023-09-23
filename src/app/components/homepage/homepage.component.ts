@@ -7,10 +7,7 @@ import { RecipeService } from 'src/app/services/recipe.service';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'],
 })
-
 export class HomepageComponent implements OnInit {
-  showModal: boolean = false;
-
   recipes: Recipe[] = [];
   allRecipes: Recipe[] = [];
   recipesWithExactIngredients: Recipe[] = [];
@@ -19,10 +16,28 @@ export class HomepageComponent implements OnInit {
   currentIngredient: string = '';
   ingredientsList: string[] = [];
 
+  isFirstLoad!: boolean;
+
   constructor(private recipeService: RecipeService) {}
 
   ngOnInit(): void {
     this.loadRecipes();
+    const isFirstLoad = sessionStorage.getItem('isFirstLoad') === 'true';
+    this.isFirstLoad = isFirstLoad;
+
+    if (this.isFirstLoad) {
+      const container = document.getElementById('contenitore');
+      container!.style.display = 'none';
+
+      setTimeout(() => {
+        const video = document.getElementById('myVideo');
+        video!.style.display = 'none';
+        container!.style.display = 'block';
+      }, 3300);
+
+      this.isFirstLoad = true;
+    }
+    sessionStorage.setItem('isFirstLoad', 'false')
   }
 
   loadRecipes() {
@@ -38,7 +53,9 @@ export class HomepageComponent implements OnInit {
   }
 
   searchRecipes() {
-    const ingredients = this.ingredientsList.map((ingredient) => ingredient.trim());
+    const ingredients = this.ingredientsList.map((ingredient) =>
+      ingredient.trim()
+    );
     console.log('Mapped and trimmed ingredients: ', ingredients);
 
     this.recipeService
@@ -62,25 +79,23 @@ export class HomepageComponent implements OnInit {
             )
           )
         );
+        if (
+          !this.recipesWithExactIngredients.length &&
+          !this.recipesWithAnyIngredients.length
+        ) {
+          const modale = document.getElementById('noIngredientModal');
+          modale!.classList.add('show');
+          modale!.style.display = 'block';
+        }
       });
-      if (this.recipesWithExactIngredients.length === 0 && this.recipesWithAnyIngredients.length === 0) {
-        this.showNoIngredientModal();
-      }
     this.ingredientsList = [];
-  }
-
-  showNoIngredientModal() {
-    const modal:any = document.querySelector('#noIngredientModal');
-    if(modal) {
-      modal.show();
-    }
   }
 
   addIngredient(event: Event) {
     event?.preventDefault();
-    if (this.currentIngredient.trim() !== "") {
+    if (this.currentIngredient.trim() !== '') {
       this.ingredientsList.push(this.currentIngredient);
-      this.currentIngredient = "";
+      this.currentIngredient = '';
     }
   }
 
@@ -88,6 +103,12 @@ export class HomepageComponent implements OnInit {
     if (index >= 0 && index < this.ingredientsList.length) {
       this.ingredientsList.splice(index, 1);
     }
+  }
+
+  closeModal() {
+    const noIngredientModal = document.getElementById('noIngredientModal');
+    noIngredientModal!.classList.remove('show');
+    noIngredientModal!.style.display = 'none';
   }
 
   formatInput(text: string) {

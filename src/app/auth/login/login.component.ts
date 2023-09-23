@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.authService.login(this.email, this.password).subscribe(
       (response) => {
-        const token = this.authService.getToken(); // Verifica il token nella console
+        const token = this.authService.getToken();
+        sessionStorage.setItem('isFirstLoad', 'true');
 
         this.router.navigate(['/homepage']);
       },

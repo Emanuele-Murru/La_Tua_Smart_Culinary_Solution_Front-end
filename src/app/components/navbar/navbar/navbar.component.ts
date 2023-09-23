@@ -8,41 +8,32 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   showButtonsLog: boolean = true;
-  isHomepage: boolean = false;
   navEl = document.querySelector('.navbar');
+
+  isFirstLoad!: boolean;
 
   constructor(private authSrv: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-
+    const isFirstLoad = sessionStorage.getItem('isFirstLoad') === 'true';
+    this.isFirstLoad = isFirstLoad;
     setTimeout(() => {
+      if (this.router.url === '/homepage' && isFirstLoad) {
 
-      if (this.router.url === '/homepage') {
-        this.isHomepage = true;
+        if (isFirstLoad) {
+          const navEl = document.getElementById('navEl');
+          navEl!.style.display = 'none';
+          setInterval(() => {
+            navEl!.style.display = 'flex';
+          }, 3300);
+        }
       } else {
-        this.isHomepage = false;
       }
-    }, 10)
+    }, 15);
 
     if (this.authSrv.isLoggedIn()) {
       this.showButtonsLog = false;
     }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const navEl = document.getElementById('navEl');
-      if (!navEl) {
-        console.error("L'elemento con l'ID 'navEl' non è stato trovato.");
-        return;
-      }
-
-      window.addEventListener('scroll', () => {
-        if (window.scrollY >= 1) {
-          navEl.classList.add('navbar-scroll');
-        } else if (window.scrollY < 56) {
-          navEl.classList.remove('navbar-scroll');
-        }
-      });
-    });
   }
 
   logOut() {

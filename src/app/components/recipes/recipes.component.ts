@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { Recipe } from 'src/app/models/recipe.interface';
 import { Ingredient } from 'src/app/models/ingredient.interface';
@@ -10,8 +10,11 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./recipes.component.scss'],
 })
 export class RecipesComponent implements OnInit {
+  @ViewChild('newRecipeModal') newRecipeModal!: ElementRef;
   showForms: boolean = false;
   selectedIngredients: Ingredient[] = [];
+
+  page = 0;
 
   recipes: Recipe[] = [];
   newRecipe: Recipe = {
@@ -47,7 +50,7 @@ export class RecipesComponent implements OnInit {
   }
 
   loadRecipes() {
-    this.RecipeService.getRecipes(0, 'title').subscribe(
+    this.RecipeService.getRecipes(this.page, 'title').subscribe(
       (recipes: Recipe[]) => {
         console.log(recipes);
         this.recipes = recipes;
@@ -144,7 +147,7 @@ export class RecipesComponent implements OnInit {
     );
   }
 
-  updateRecipe(id:number, recipe: Recipe) {
+  updateRecipe(id: number, recipe: Recipe) {
     const updatedRecipe: Recipe = {
       title: this.newRecipe.title,
       category: this.newRecipe.category,
@@ -182,6 +185,22 @@ export class RecipesComponent implements OnInit {
     const index = this.selectedIngredients.indexOf(ingredient);
     if (index !== -1) {
       this.selectedIngredients.splice(index, 1);
+    }
+  }
+
+  openRecipeModal() {
+    this.newRecipeModal.nativeElement.classList.add('show');
+  }
+
+  nextPage() {
+    this.page++; // Vai alla pagina successiva
+    this.loadRecipes();
+  }
+
+  previousPage() {
+    if (this.page > 0) {
+      this.page--; // Vai alla pagina precedente solo se non sei sulla prima pagina
+      this.loadRecipes();
     }
   }
 

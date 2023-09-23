@@ -2,19 +2,26 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 40px;
   margin: 0;
+  color: #ee980f;
 }
 
 .navbar {
   transition: all 0.8s;
+  padding: 0 8%;
 }
 
-// .navbar .navbar-collapse {
-//   background-color: #F5F5DC;
-//   border-radius: 25px;
-// }
-
 .navbar-scroll {
-  background-color: #F5F5DC;
+  transition: all 0.1s;
+  background-color: #F5F5DC
+}
+
+.navbar-hp-scroll {
+  transition: all 1s;
+  background: rgb(245,245,220);
+  background: -moz-linear-gradient(207deg, rgba(245,245,220,1) 27%, rgba(112,128,144,1) 84%, rgba(77,80,82,1) 97%);
+  background: -webkit-linear-gradient(207deg, rgba(245,245,220,1) 27%, rgba(112,128,144,1) 84%, rgba(77,80,82,1) 97%);
+  background: linear-gradient(207deg, rgba(245,245,220,1) 27%, rgba(112,128,144,1) 84%, rgba(77,80,82,1) 97%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f5f5dc",endColorstr="#4d5052",GradientType=1);
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
 }
 

@@ -1,6 +1,10 @@
-#recipeCarousel {
+.contenitore {
+  padding: 0 7%;
+  margin: 0;
+}
 
-  margin-top: 120px;
+#recipeCarousel {
+  margin: 140px 0px;
 
   #carouselItem {
     height: 500px;
@@ -11,4 +15,13 @@
     object-fit: cover;
     filter: brightness(0.6);
   }
+}
+
+.card {
+  background: rgb(245, 245, 220);
+  background: -moz-linear-gradient(207deg, rgba(245, 245, 220, 1) 27%, rgba(112, 128, 144, 1) 84%, rgba(77, 80, 82, 1) 97%);
+  background: -webkit-linear-gradient(207deg, rgba(245, 245, 220, 1) 27%, rgba(112, 128, 144, 1) 84%, rgba(77, 80, 82, 1) 97%);
+  background: linear-gradient(207deg, rgba(245, 245, 220, 1) 27%, rgba(112, 128, 144, 1) 84%, rgba(77, 80, 82, 1) 97%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f5f5dc", endColorstr="#4d5052", GradientType=1);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
 }

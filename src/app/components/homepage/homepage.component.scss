@@ -1,19 +1,18 @@
-
  #myVideo {
    min-width: 100%;
-   min-height: 50%;
+   min-height: 40%;
    width: 100%;
-   z-index: -1;
  }
 
+.modal {
+  background: rgb(245,245,220);
+  background: -moz-linear-gradient(207deg, rgba(245,245,220,1) 27%, rgba(112,128,144,1) 84%, rgba(77,80,82,1) 97%);
+  background: -webkit-linear-gradient(207deg, rgba(245,245,220,1) 27%, rgba(112,128,144,1) 84%, rgba(77,80,82,1) 97%);
+  background: linear-gradient(207deg, rgba(245,245,220,1) 27%, rgba(112,128,144,1) 84%, rgba(77,80,82,1) 97%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f5f5dc",endColorstr="#4d5052",GradientType=1);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
 
-// #myVideo {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   min-width: 100%;
-//   min-height: 50%;
-//   width: 100%;
-//   z-index: -1;
-//   filter: brightness(1);
-// }
+.customModal {
+  background-color: #F5F5DC;
+}
