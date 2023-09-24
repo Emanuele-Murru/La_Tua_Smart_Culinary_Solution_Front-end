@@ -21,7 +21,9 @@ export class LoginComponent implements OnInit {
         const token = this.authService.getToken();
         sessionStorage.setItem('isFirstLoad', 'true');
 
-        this.router.navigate(['/homepage']);
+        setTimeout(() => {
+          this.router.navigate(['/homepage']);
+        }, 1000)
       },
       (error) => {
 
