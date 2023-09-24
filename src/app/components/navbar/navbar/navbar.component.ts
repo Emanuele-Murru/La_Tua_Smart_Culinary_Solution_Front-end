@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
           navEl!.style.display = 'none';
           setInterval(() => {
             navEl!.style.display = 'flex';
-          }, 3300);
+          }, 3500);
         }
       } else {
       }
