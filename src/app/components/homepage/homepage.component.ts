@@ -33,7 +33,7 @@ export class HomepageComponent implements OnInit {
         const video = document.getElementById('myVideo');
         video!.style.display = 'none';
         container!.style.display = 'block';
-      }, 3300);
+      }, 3500);
 
       this.isFirstLoad = true;
     }

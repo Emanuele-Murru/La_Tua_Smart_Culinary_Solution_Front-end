@@ -4,6 +4,32 @@
    width: 100%;
  }
 
+#banner {
+  background-image: url(../../../../src/assets/img/hp5.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 700px;
+  width: 100%;
+}
+
+.bannerText {
+  font-size: 3em;
+  color: #fafafa;
+}
+
+.description {
+  margin: 100px auto;
+  background-color: #f5f5dc;
+  min-height: 500px;
+
+  img {
+    max-width: 550px;
+    max-height: 400px;
+    border-radius: 50px;
+  }
+}
+
 .modal {
   background: rgb(245,245,220);
   background: -moz-linear-gradient(207deg, rgba(245,245,220,1) 27%, rgba(112,128,144,1) 84%, rgba(77,80,82,1) 97%);
@@ -15,4 +41,35 @@
 
 .customModal {
   background-color: #F5F5DC;
+}
+
+.card {
+  background-color: #F5F5DC;
+}
+
+// FOOTER
+.text-small {
+  font-size: 0.9rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+a:hover, a:focus {
+  text-decoration: none;
+}
+
+.form-control {
+  background: #F5F5DC;
+}
+
+.form-control:focus {
+  background: #F5F5DC;
+}
+
+footer {
+  background: #F5F5DC;
 }

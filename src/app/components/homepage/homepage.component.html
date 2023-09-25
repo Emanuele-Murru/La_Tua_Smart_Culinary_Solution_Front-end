@@ -1,14 +1,45 @@
-  <video autoplay loop muted id="myVideo" *ngIf="isFirstLoad">
-        <source src="../../../assets/videos/Homepage-video.mp4" type="video/mp4">
-        Il tuo browser non supporta la riproduzione del video.
-      </video>
+<video autoplay loop muted id="myVideo" *ngIf="isFirstLoad">
+  <source src="../../../assets/videos/Homepage-video.mp4" type="video/mp4">
+  Il tuo browser non supporta la riproduzione del video.
+</video>
 
-<div class="container" id="contenitore">
-  <h1>Homepage</h1>
+<div id="banner" class="d-flex flex-column justify-content-end" alt="immagine spezie banner">
+</div>
+
+<div class="text-center">
+  <img class="img-fluid" src="http://1.bp.blogspot.com/-p1ydIkDBNro/URNUo0e4IjI/AAAAAAAAAS0/mK9GPV2TnZs/s1600/baker_dough.gif" alt="">
+</div>
+
+<div class="description row d-flex flex-row align-items-center">
+
+  <div class="col-lg-6 col-md-12 col-12 text-center px-lg-5 mt-5">
+    <h1>
+      Benvenuto da
+      <br> <b class="text-warning">"LA TUA SMART CULINARY SOLUTION!"</b>
+    </h1>
+    <h2>
+      <br> Ancora una volta non sai cosa cucinare o cosa fare con quegli ingredienti che stanno li nel tuo frigo o nello
+      scaffale?
+      <br> Ci penso io!
+      <br> Inserisci qui sotto gli ingredienti e ti aiuterò a riempire quel buco nello stomaco!
+    </h2>
+  </div>
+
+  <div class="col-lg-6 col-md-12 col-12 my-5 text-center">
+    <img class="col-lg-6 col-md-6 col-12 img-fluid px-lg-3 mb-1 mb-md-5 px-1"
+      src="../../../assets/img/man_standing.jpeg" alt="">
+    <img class="col-lg-6 col-md-6 col-12 img-fluid px-lg-3 mt-5 mt-md-5 px-1"
+      src="../../../assets/img/man_standing(3).jpeg" alt="">
+  </div>
+</div>
+
+<div class="container mb-5" id="contenitore">
+
 
   <div class="form-group">
-    <label for="ingredientInput">Inserisci gli ingredienti</label>
-    <input type="text" class="form-control" id="ingredientInput" [(ngModel)]="currentIngredient" (input)="currentIngredient = formatInput(currentIngredient)" (keydown.enter)="addIngredient($event)">
+    <h2>Inserisci gli ingredienti</h2>
+    <input type="text" class="form-control" id="ingredientInput" [(ngModel)]="currentIngredient"
+      (input)="currentIngredient = formatInput(currentIngredient)" (keydown.enter)="addIngredient($event)">
     <button class="btn btn-primary my-2" type="button" (click)="addIngredient($event)">Aggiungi</button>
   </div>
 
@@ -25,15 +56,17 @@
     Cerca Ricette
   </button>
 
-  <div class="modal fade text-dark" id="noIngredientModal" tabindex="-1" aria-labelledby="noIngredientModalLabel" aria-hidden="true">
+  <div class="modal fade text-dark" id="noIngredientModal" tabindex="-1" aria-labelledby="noIngredientModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content customModal">
         <div class="modal-header">
           <h5 class="modal-title" id="noIngredientModalLabel">Mi spiace!</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()"
+            aria-label="Close"></button>
         </div>
         <div class="modal-body text-center">
-          <img src="../../../../assets/img/IMG_9533.JPG" alt="Nessun ingrediente trovato" class="img-fluid rounded">
+          <img src="../../../assets/img/IMG_9534.JPG" alt="Nessun ingrediente trovato" class="img-fluid rounded">
           <p>Nessun ingrediente trovato!</p>
         </div>
         <div class="modal-footer">
@@ -47,32 +80,97 @@
 
     <h2>Ricette con gli ingredienti specificati:</h2>
 
-    <div *ngFor="let recipe of recipesWithExactIngredients">
-      <h3>Titolo: {{recipe.title}}</h3>
-      <h4>Categoria: {{recipe.category}}</h4>
-      <h4>Istruzioni: {{recipe.instructions}}</h4>
-      <h4>Tempo di preparazione: {{recipe.prepTime}}</h4>
-      <h4>Tempo di cottura: {{recipe.cookTime}}</h4>
-      <h4>Per {{recipe.servings}} persone</h4>
+    <div class="row">
 
-      <ul *ngFor="let ingredient of recipe.ingredients">
-        <li>Ingrediente: {{ingredient.name}} - {{ingredient.quantity}}</li>
-      </ul>
+      <div *ngFor="let recipe of recipesWithAnyIngredients" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center">
+        <div class="card my-4">
+          <div>
+            <img src="{{recipe.imageUrl}}" class="img-fluid rounded" alt="...">
+            <div>
+              <div class="card-body">
+                <h5 class="card-title">Titolo: {{recipe.title}}</h5>
+                <span>Categoria: {{recipe.category}}</span>
+                <p class="card-text">Tempo di preparazione: {{recipe.prepTime}}</p>
+                <p class="card-text">Tempo di cottura: {{recipe.cookTime}}</p>
+                <p class="card-text"><small class="text-body-secondary">Portate: {{recipe.servings}}</small></p>
+              </div>
+              <div class="text-center">
+                <a routerLink='detail-page/{{recipe.id}}' type="button" class="btn btn-primary m-2">Info</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div *ngIf="recipesWithAnyIngredients.length > 0">
-    <h2>Ricette con almeno uno degli ingredienti specificati:</h2>
-    <div *ngFor="let recipe of recipesWithAnyIngredients">
-      <h3>Titolo: {{recipe.title}}</h3>
-      <h4>Categoria: {{recipe.category}}</h4>
-      <h4>Istruzioni: {{recipe.instructions}}</h4>
-      <h4>Tempo di preparazione: {{recipe.prepTime}}</h4>
-      <h4>Tempo di cottura: {{recipe.cookTime}}</h4>
-      <h4>Per {{recipe.servings}} persone</h4>
-      <ul *ngFor="let ingredient of recipe.ingredients">
-        <li>Ingrediente: {{ingredient.name}} - {{ingredient.quantity}}</li>
-      </ul>
+
+    <div class="row">
+      <h2>Ricette con almeno uno degli ingredienti specificati:</h2>
+      <div *ngFor="let recipe of recipesWithAnyIngredients" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center">
+        <div class="card my-4">
+          <div>
+            <img src="{{recipe.imageUrl}}" class="img-fluid rounded" alt="...">
+            <div>
+              <div class="card-body">
+                <h5 class="card-title">Titolo: {{recipe.title}}</h5>
+                <span>Categoria: {{recipe.category}}</span>
+                <p class="card-text">Tempo di preparazione: {{recipe.prepTime}}</p>
+                <p class="card-text">Tempo di cottura: {{recipe.cookTime}}</p>
+                <p class="card-text"><small class="text-body-secondary">Portate: {{recipe.servings}}</small></p>
+              </div>
+              <div class="text-center">
+                <a routerLink='detail-page/{{recipe.id}}' type="button" class="btn btn-primary m-2">Info</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
 </div>
+
+<!-- FOOTER -->
+<footer class="w-100 py-4 text-dark">
+  <div class="container py-4">
+    <div class="row gy-4 gx-5">
+      <div class="col-lg-4 col-md-6">
+        <h5 class="h1 text-white">FB.</h5>
+        <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+        <p class="small mb-0">&copy; Copyrights. All rights reserved. <a class="text-primary"
+            href="#">Bootstrapious.com</a></p>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h5 class="text-white mb-3">Quick links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Get started</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h5 class="text-white mb-3">Quick links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Get started</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <h5 class="text-white mb-3">Newsletter</h5>
+        <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+        <form action="#">
+          <div class="input-group mb-3">
+            <input class="form-control" type="text" placeholder="E-mail" aria-label="E-mail"
+              aria-describedby="button-addon2">
+            <button class="btn btn-primary" id="button-addon2" type="button"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>

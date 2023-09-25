@@ -55,11 +55,10 @@
 
         <h2>Inserisci una nuova ricetta</h2>
 
-        <!-- Bottone per aprire la modale -->
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newRecipeModal">Aggiungi nuova
           ricetta</button>
 
-        <!-- Modale per la nuova ricetta -->
+        <!-- Modale per creare una nuova ricetta -->
         <div class="modal fade" id="newRecipeModal" tabindex="-1" aria-labelledby="newRecipeModalLabel"
           aria-hidden="true">
           <div class="modal-dialog modal-lg">
@@ -69,7 +68,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <!-- Inserisci il form della nuova ricetta qui -->
                 <form (submit)="createRecipe()">
                   <div class="form-group">
                     <label for="Title">Titolo</label>
@@ -126,7 +124,7 @@
                     </select>
                   </div>
 
-                  <!-- Form per creare un nuovo ingrediente -->
+                  <!-- ?Form per creare un nuovo ingrediente -->
                   <form>
                     <div class="form-group">
                       <label for="newIngredient">Crea un nuovo ingrediente qui sotto</label>
@@ -136,7 +134,8 @@
                         placeholder="Quantità ingrediente">
                       <button (click)="addIngredientToList()" class="btn btn-primary mt-3">Aggiungi ingrediente</button>
                     </div>
-                    <!-- Elenco degli ingredienti aggiunti -->
+
+                    <!--? Elenco degli ingredienti aggiunti -->
                     <hr>
                     <div>
                       <h4>Ingredienti aggiunti:</h4>
@@ -169,19 +168,6 @@
         </div>
       </form>
     </div>
-    <!--
-    <button
-    class="btn bannercontrolpanel rounded-3 mt-4 mx-2 px-3"
-    (click)="previousPage()"
-  >
-    PREVIOUS
-  </button>
-  <button
-    class="btn bannercontrolpanel rounded-3 mt-4 px-3"
-    (click)="nextPage()"
-  >
-    NEXT
-  </button> -->
 
     <nav aria-label="..." class="my-4">
       <ul class="pagination">
