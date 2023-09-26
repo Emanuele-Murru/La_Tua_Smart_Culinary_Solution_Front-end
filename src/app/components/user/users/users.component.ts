@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
+import { User } from 'src/app/models/user.interface';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-users',
@@ -6,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+  user: User | null = null;
 
-  constructor() { }
+  constructor(private userSrv: UserService, private http: HttpClient) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.userSrv.getCurrentUserData().subscribe(userData => {
+      this.user = userData
+      console.log(userData);
+    })
+
   }
+
+  // logOut() {
+  //   this.authService.logout();
+  // }
 
 }

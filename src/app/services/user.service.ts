@@ -14,4 +14,8 @@ export class UserService {
   getUserData(userId: number): Observable <any> {
     return this.http.get<any>(`${this.apiUrl}/${userId}`);
   }
+
+  getCurrentUserData(): Observable<any> {
+    return this.http.get<any>('http://localhost:3001/user/current');
+  }
 }

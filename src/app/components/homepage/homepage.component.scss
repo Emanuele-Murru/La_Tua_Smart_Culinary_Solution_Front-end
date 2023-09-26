@@ -4,15 +4,6 @@
    width: 100%;
  }
 
-#banner {
-  background-image: url(../../../../src/assets/img/hp5.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  min-height: 700px;
-  width: 100%;
-}
-
 .bannerText {
   font-size: 3em;
   color: #fafafa;
@@ -20,7 +11,7 @@
 
 .description {
   margin: 100px auto;
-  background-color: #f5f5dc;
+  background-color: #98bad7;
   min-height: 500px;
 
   img {
@@ -62,14 +53,14 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
-.form-control {
-  background: #F5F5DC;
-}
+// .form-control {
+//   background: #5faaba;
+// }
 
-.form-control:focus {
-  background: #F5F5DC;
-}
+// .form-control:focus {
+//   background: #5faaba;
+// }
 
 footer {
-  background: #F5F5DC;
+  background: #98bad7;
 }

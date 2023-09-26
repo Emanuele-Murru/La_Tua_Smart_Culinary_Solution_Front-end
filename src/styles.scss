@@ -11,5 +11,13 @@ body {
 
   // background-color: #fffbf4;
   // background-color: #faf6ee;
-  background-color: #f8f6f4;
+  background-color: #d0e5ef;
+}
+
+@import "mixsin.scss";
+
+:root {
+  --color-textColor: #ee980f;
+  --color-navbarColor: #004879;
+  --color-secondaryColor: #98bad7;
 }

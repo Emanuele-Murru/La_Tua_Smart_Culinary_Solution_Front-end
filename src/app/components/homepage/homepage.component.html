@@ -3,7 +3,8 @@
   Il tuo browser non supporta la riproduzione del video.
 </video>
 
-<div id="banner" class="d-flex flex-column justify-content-end" alt="immagine spezie banner">
+<div id="banner" class="d-flex flex-column justify-content-end img-fluid" alt="immagine spezie banner">
+  <img class="w-100" src="../../../assets/img/Benvenuto da (1).png" alt="">
 </div>
 
 <div class="text-center">
@@ -12,16 +13,20 @@
 
 <div class="description row d-flex flex-row align-items-center">
 
-  <div class="col-lg-6 col-md-12 col-12 text-center px-lg-5 mt-5">
+  <div class="col-lg-6 col-md-12 col-12 text-center px-lg-5 my-4">
     <h1>
-      Benvenuto da
+      Benvenuto da...
       <br> <b class="text-warning">"LA TUA SMART CULINARY SOLUTION!"</b>
     </h1>
-    <h2>
-      <br> Ancora una volta non sai cosa cucinare o cosa fare con quegli ingredienti che stanno li nel tuo frigo o nello
+    <h2 class="my-3">
+      Ancora una volta non sai cosa cucinare o cosa fare con gli ingredienti che stanno lì nel tuo frigo o nello
       scaffale?
-      <br> Ci penso io!
-      <br> Inserisci qui sotto gli ingredienti e ti aiuterò a riempire quel buco nello stomaco!
+    </h2>
+    <h2 class="my-3">
+      Nessun Problema....Ci penso io!
+    </h2>
+    <h2>
+      Inserisci qui sotto gli ingredienti e ti aiuterò a riempire quel buco nello stomaco!
     </h2>
   </div>
 
@@ -38,7 +43,7 @@
 
   <div class="form-group">
     <h2>Inserisci gli ingredienti</h2>
-    <input type="text" class="form-control" id="ingredientInput" [(ngModel)]="currentIngredient"
+    <input type="text" class="form-control " id="ingredientInput" [(ngModel)]="currentIngredient"
       (input)="currentIngredient = formatInput(currentIngredient)" (keydown.enter)="addIngredient($event)">
     <button class="btn btn-primary my-2" type="button" (click)="addIngredient($event)">Aggiungi</button>
   </div>
@@ -83,9 +88,9 @@
     <div class="row">
 
       <div *ngFor="let recipe of recipesWithAnyIngredients" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center">
-        <div class="card my-4">
+        <div class="card my-4 h-100">
           <div>
-            <img src="{{recipe.imageUrl}}" class="img-fluid rounded" alt="...">
+            <img src="{{recipe.imageUrl}}" class="img-fluid rounded" style="height: 300px; width: 600px;" alt="...">
             <div>
               <div class="card-body">
                 <h5 class="card-title">Titolo: {{recipe.title}}</h5>
@@ -109,9 +114,9 @@
     <div class="row">
       <h2>Ricette con almeno uno degli ingredienti specificati:</h2>
       <div *ngFor="let recipe of recipesWithAnyIngredients" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center">
-        <div class="card my-4">
+        <div class="card my-4 h-100">
           <div>
-            <img src="{{recipe.imageUrl}}" class="img-fluid rounded" alt="...">
+            <img src="{{recipe.imageUrl}}" class="img-fluid rounded" style="height: 300px; width: 600px;" alt="...">
             <div>
               <div class="card-body">
                 <h5 class="card-title">Titolo: {{recipe.title}}</h5>
@@ -121,7 +126,7 @@
                 <p class="card-text"><small class="text-body-secondary">Portate: {{recipe.servings}}</small></p>
               </div>
               <div class="text-center">
-                <a routerLink='detail-page/{{recipe.id}}' type="button" class="btn btn-primary m-2">Info</a>
+                <a routerLink='../recipes/detail-page/{{recipe.id}}' type="button" class="btn btn-primary m-2">Info</a>
               </div>
             </div>
           </div>

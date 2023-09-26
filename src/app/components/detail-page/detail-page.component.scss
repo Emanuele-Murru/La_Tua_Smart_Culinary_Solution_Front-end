@@ -1,22 +1,9 @@
-.contenitore {
-  margin-top: 180px;
-}
-
-.content {
-  padding: 0 50px !important;
-  margin: 0 auto;
-}
+@import '../../../mixsin.scss';
 
 i {
   font-size: 1.5em;
 }
 
 .rectangles {
-  // padding: 15px;
-}
-
-.hr {
-  height: 2px;
-  border: 1px solid #b0b2b5;
-  background-color: #b0b2b5;
+  background-color: color(secondaryColor)
 }

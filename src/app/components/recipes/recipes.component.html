@@ -24,10 +24,10 @@
 
     <div class="row">
 
-      <div *ngFor="let recipe of recipes" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center">
-        <div class="card my-4">
+      <div *ngFor="let recipe of recipes" class="col-xl-3 col-lg-6 col-md-6 col-12 text-center">
+        <div class="card my-5">
           <div>
-            <img src="{{recipe.imageUrl}}" class="img-fluid rounded" alt="...">
+            <img src="{{recipe.imageUrl}}" class="img-fluid rounded" style="height: 300px;" alt="{{recipe.title}}">
             <div>
               <div class="card-body">
                 <h5 class="card-title">Titolo: {{recipe.title}}</h5>
