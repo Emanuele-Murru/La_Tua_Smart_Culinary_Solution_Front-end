@@ -1,3 +1,5 @@
+ @import '../../../mixsin.scss';
+
  #myVideo {
    min-width: 100%;
    min-height: 40%;
@@ -38,8 +40,12 @@
   background-color: #F5F5DC;
 }
 
-.card {
+.cardRecipes{
   background-color: #F5F5DC;
+}
+
+.newsLetter {
+  background-color: #98bad7;
 }
 
 // FOOTER
@@ -66,7 +72,7 @@ a:hover, a:focus {
 // }
 
 footer {
-  background: #98bad7;
+  background: color(navbarColor);
 }
 
 // Input add Ingredient
@@ -84,26 +90,24 @@ footer {
   border-radius: 0.8rem 0 0 0.8rem;
   background: #e8e8e8;
   box-shadow: inset 13px 13px 10px #dcdcdc,
-            inset -13px -13px 10px #f4f4f4;
+  inset -13px -13px 10px #f4f4f4;
   width: 100%;
   flex-basis: 75%;
   padding: 1rem;
   border: none;
-  border-left: 2px solid #4998FF;
-  color: #5e5e5e;
+  color: #000000;
   transition: all 0.2s ease-in-out;
 }
 
 .input-container input:focus {
-  border-left: 2px solid #4998FF;
   outline: none;
-  box-shadow: inset 13px 13px 10px #BFF0FA,inset -13px -13px 10px #f4f4f4;
+  box-shadow: inset 0px 13px 10px #b3e9f4,inset -13px -13px 10px #f4f4f4;
 }
 
 .input-container button {
   flex-basis: 25%;
   padding: 1rem;
-  background: linear-gradient(135deg, #BFF0FA 0%, #4998FF 100%);
+  background: linear-gradient(135deg, #a7e0ec 0%, #4998FF 100%);
   font-weight: 900;
   letter-spacing: 0.3rem;
   text-transform: uppercase;
@@ -131,4 +135,92 @@ footer {
     padding: 1rem;
     border-radius: 0.8rem;
   }
+}
+
+// Back to top
+button {
+  width: 140px;
+  height: 56px;
+  overflow: hidden;
+  border: none;
+  color: #fff;
+  background: none;
+  position: relative;
+  padding-bottom: 2em;
+}
+
+button > div,button > svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+button:before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  background: currentColor;
+  transition: transform 0.25s ease-out;
+}
+
+button:hover:before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+button .clone > *,button .text > * {
+  opacity: 1;
+  font-size: 1.3rem;
+  transition: 0.2s;
+  margin-left: 4px;
+}
+
+button .clone > * {
+  transform: translateY(60px);
+}
+
+button:hover .clone > * {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+button:hover .text > * {
+  opacity: 1;
+  transform: translateY(-60px);
+  transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+button:hover .clone > :nth-child(1) {
+  transition-delay: 0.15s;
+}
+
+button:hover .clone > :nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+button:hover .clone > :nth-child(3) {
+  transition-delay: 0.25s;
+}
+
+button:hover .clone > :nth-child(4) {
+  transition-delay: 0.3s;
+}
+/* icon style and hover */
+button svg {
+  width: 20px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(-50deg);
+  transition: 0.2s ease-out;
+}
+
+button:hover svg {
+  transform: translateY(-50%) rotate(-90deg);
 }

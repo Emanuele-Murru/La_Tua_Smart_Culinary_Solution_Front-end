@@ -39,19 +39,10 @@
 </div>
 
 <div class="container mb-5" id="contenitore">
-
-
-  <!-- <div class="form-group">
-    <h2>Inserisci gli ingredienti</h2>
-    <input type="text" class="form-control " id="ingredientInput" [(ngModel)]="currentIngredient"
-      (input)="currentIngredient = formatInput(currentIngredient)" (keydown.enter)="addIngredient($event)">
-    <button class="btn btn-primary my-2" type="button" (click)="addIngredient($event)">Aggiungi</button>
-  </div> -->
-
   <h2>Inserisci gli ingredienti</h2>
   <div class="input-container my-4">
     <input type="text" [(ngModel)]="currentIngredient" (input)="currentIngredient = formatInput(currentIngredient)" (keydown.enter)="addIngredient($event)" placeholder="Aggiungi ingrediente">
-    <button class="button">Aggiungi</button>
+    <button class="button" (click)="addIngredient($event)">Aggiungi</button>
   </div>
 
 
@@ -59,18 +50,28 @@
   <div class="container">
 
     <div class="row">
-      <div class="col-2 badge bg-light text-black mx-3 my-3" *ngFor="let ingredient of ingredientsList;
-        let i = index" type="button" (click)="removeIngredient(i)"> {{ ingredient }}
+      <!-- <div class="col-2 badge bg-light text-black mx-3 my-3" *ngFor="let ingredient of ingredientsList;
+        let i = index" >
+        <h5 class="d-flex">{{ ingredient }} <span type="button" class="btn btn-sm btn-danger float-end" (click)="removeIngredient(i)"><i class="bi bi-x-lg"></i></span></h5>
+      </div> -->
+      <div class="row">
+        <div class="col-md-2 my-3" *ngFor="let ingredient of ingredientsList; let i = index">
+          <p class="badge fs-5 bg-light text-black" type="button" (click)="removeIngredient(i)">
+            {{ ingredient }} <span> <i class="bi bi-x-lg"></i></span>
+          </p>
+        </div>
       </div>
 
+
       <div class="row">
-      <button class="btn btn-primary my-4" type="button" (click)="searchRecipes()">
+      <button class="col-2 btn btn-primary my-4" type="button" (click)="searchRecipes()">
         Cerca Ricette
       </button>
     </div>
     </div>
   </div>
 
+  <!-- Modale Ingredienti non trovati -->
   <div class="modal fade text-dark" id="noIngredientModal" tabindex="-1" aria-labelledby="noIngredientModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -98,7 +99,7 @@
     <div class="row">
 
       <div *ngFor="let recipe of recipesWithAnyIngredients" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center">
-        <div class="card my-4 h-100">
+        <div class="card cardRecipes my-4 h-100">
           <div>
             <img src="{{recipe.imageUrl}}" class="img-fluid rounded" style="height: 300px; width: 600px;" alt="...">
             <div>
@@ -124,7 +125,7 @@
     <div class="row">
       <h2>Ricette con almeno uno degli ingredienti specificati:</h2>
       <div *ngFor="let recipe of recipesWithAnyIngredients" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center">
-        <div class="card my-4 h-100">
+        <div class="card cardRecipes my-4 h-100">
           <div>
             <img src="{{recipe.imageUrl}}" class="img-fluid rounded" style="height: 300px; width: 600px;" alt="...">
             <div>
@@ -147,13 +148,15 @@
 
 </div>
 
-<div class="row">
-  <div class="col-12">
-    <div class="row">
-      <h3>Sii il primo a sapere e ricevere le nostre nuove ricette e nuove categoria da scoprire!</h3>
-      <input type="text" placeholder="Inserisci qui la tua e-mail">
-      <button class="btn orange">Subscribe</button>
+<!-- Newsletter -->
+<div class="container my-5">
+  <div class="mt-4 p-5 bg-primary text-white rounded-5">
+    <h3>Sii il primo a sapere e ricevere le nostre nuove ricette e nuove categoria da scoprire!</h3>
+    <div class="input-group my-3">
+      <input type="email" class="form-control" placeholder="Inserisci qui la tua e-mail">
+      <button class="btn btn-dark" type="button" id="button-addon2">Button</button>
     </div>
+
   </div>
 </div>
 
@@ -186,15 +189,21 @@
         </ul>
       </div>
       <div class="col-lg-4 col-md-6">
-        <h5 class="text-white mb-3">Newsletter</h5>
-        <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-        <form action="#">
-          <div class="input-group mb-3">
-            <input class="form-control" type="text" placeholder="E-mail" aria-label="E-mail"
-              aria-describedby="button-addon2">
-            <button class="btn btn-primary" id="button-addon2" type="button"><i class="fas fa-paper-plane"></i></button>
+        <button id="back-to-top" (click)="scrollToTop()">
+          <div class="text">
+              <span>Back</span>
+              <span>to</span>
+              <span>top</span>
           </div>
-        </form>
+          <div class="clone">
+              <span>Back</span>
+              <span>to</span>
+              <span>top</span>
+          </div>
+          <svg width="20px" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+      </button>
       </div>
     </div>
   </div>

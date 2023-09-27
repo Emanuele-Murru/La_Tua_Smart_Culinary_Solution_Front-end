@@ -38,6 +38,15 @@ export class HomepageComponent implements OnInit {
       this.isFirstLoad = true;
     }
     sessionStorage.setItem('isFirstLoad', 'false')
+
+    window.addEventListener('scroll', () => {
+      const button = document.getElementById('back-to-top');
+      if (window.scrollY > 100) {
+        button!.style.display = 'block';
+      } else {
+        button!.style.display = 'none';
+      }
+    });
   }
 
   loadRecipes() {
@@ -113,5 +122,12 @@ export class HomepageComponent implements OnInit {
 
   formatInput(text: string) {
     return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }
 }
