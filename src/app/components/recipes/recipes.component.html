@@ -132,6 +132,8 @@
                         placeholder="Nome ingrediente" (input)=" newIngredient.name = formatInput(newIngredient.name)">
                       <input type="text" class="form-control" [(ngModel)]="newIngredient.quantity" name="quantity"
                         placeholder="Quantità ingrediente">
+                      <input type="text" class="form-control" [(ngModel)]="newIngredient.imgUrl" name="imageUrl"
+                        placeholder="Url immagine ingrediente">
                       <button (click)="addIngredientToList()" class="btn btn-primary mt-3">Aggiungi ingrediente</button>
                     </div>
 

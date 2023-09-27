@@ -4,7 +4,7 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 40px;
   margin: 0;
-  color: color(textColor);
+  color: color(orangeText);
 }
 
 #avatarLogo {
@@ -14,10 +14,10 @@
 
 .dropdown-avatar {
   margin-right: 140px;
-  background-color: color(textColor);
+  background-color: color(orangeText);
 }
 .orange {
-  color: color(textColor);
+  color: color(orangeText);
 }
 
 .navbar {
@@ -45,7 +45,7 @@
   font-family: 'Mooli', sans-serif;
   font-size: 1.35em;
   color: #000;
-  background-color: color(textColor);
+  background-color: color(orangeText);
   border: none;
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -70,7 +70,7 @@
   font-family: 'Mooli', sans-serif;
   font-size: 1.35em;
   color: #000;
-  background-color: #F5F5DC;
+  background-color: royalblue;
   border: none;
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -80,7 +80,7 @@
 }
 
 #registerBtn:hover {
-  background-color: #A91101;
+  background-color: royalblue;
   box-shadow: 0px 15px 20px rgba(236, 13, 13, 0.4);
   color: #fff;
   transform: translateY(-7px);
@@ -95,7 +95,7 @@
   font-family: 'Mooli', sans-serif;
   font-size: 1.35em;
   color: #000;
-  background-color: #F5F5DC;
+  background-color: #198754;
   border: none;
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -105,7 +105,7 @@
 }
 
 #loginBtn:hover {
-  background-color: #A91101;
+  background-color: #198754;
   box-shadow: 0px 15px 20px rgba(236, 13, 13, 0.4);
   color: #fff;
   transform: translateY(-7px);

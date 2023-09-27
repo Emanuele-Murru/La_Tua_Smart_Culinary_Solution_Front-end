@@ -32,6 +32,7 @@ export class RecipesComponent implements OnInit {
   newIngredient: Ingredient = {
     name: '',
     quantity: '',
+    imgUrl: ''
   };
 
   constructor(
@@ -79,6 +80,7 @@ export class RecipesComponent implements OnInit {
       const newIngredient: Ingredient = {
         name: this.newIngredient.name,
         quantity: this.newIngredient.quantity,
+        imgUrl: this.newIngredient.imgUrl,
       };
 
       // Aggiungo l'ingrediente alla lista degli ingredienti selezionati
@@ -88,6 +90,7 @@ export class RecipesComponent implements OnInit {
       this.newIngredient = {
         name: '',
         quantity: '',
+        imgUrl:''
       };
     } else {
       console.error('Nome ingrediente obbligatorio.');
@@ -139,6 +142,7 @@ export class RecipesComponent implements OnInit {
         this.newIngredient = {
           name: '',
           quantity: '',
+          imgUrl: '',
         };
       },
       (error) => {

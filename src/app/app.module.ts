@@ -15,13 +15,9 @@ import { RecipesComponent } from './components/recipes/recipes.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { AuthGuard } from './auth/auth.guard';
 import { DetailPageComponent } from './components/detail-page/detail-page.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 const routes: Route[] = [
-  {
-    path: '',
-    redirectTo: '/homepage',
-    pathMatch: 'full',
-  },
   {
     path: 'homepage',
     component: HomepageComponent,
@@ -48,6 +44,10 @@ const routes: Route[] = [
     path: 'recipes/detail-page/:id',
     component: DetailPageComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    component: ErrorPageComponent
   }
 ];
 
@@ -61,6 +61,7 @@ const routes: Route[] = [
     RecipesComponent,
     HomepageComponent,
     DetailPageComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@
   <div class="col-lg-6 col-md-12 col-12 text-center px-lg-5 my-4">
     <h1>
       Benvenuto da...
-      <br> <b class="text-warning">"LA TUA SMART CULINARY SOLUTION!"</b>
+      <br> <b>"LA TUA SMART CULINARY SOLUTION!"</b>
     </h1>
     <h2 class="my-3">
       Ancora una volta non sai cosa cucinare o cosa fare con gli ingredienti che stanno lì nel tuo frigo o nello
@@ -41,25 +41,35 @@
 <div class="container mb-5" id="contenitore">
 
 
-  <div class="form-group">
+  <!-- <div class="form-group">
     <h2>Inserisci gli ingredienti</h2>
     <input type="text" class="form-control " id="ingredientInput" [(ngModel)]="currentIngredient"
       (input)="currentIngredient = formatInput(currentIngredient)" (keydown.enter)="addIngredient($event)">
     <button class="btn btn-primary my-2" type="button" (click)="addIngredient($event)">Aggiungi</button>
+  </div> -->
+
+  <h2>Inserisci gli ingredienti</h2>
+  <div class="input-container my-4">
+    <input type="text" [(ngModel)]="currentIngredient" (input)="currentIngredient = formatInput(currentIngredient)" (keydown.enter)="addIngredient($event)" placeholder="Aggiungi ingrediente">
+    <button class="button">Aggiungi</button>
   </div>
 
+
   <!-- Lista degli ingredienti aggiunti -->
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let ingredient of ingredientsList; let i = index">
-      {{ ingredient }}
-      <button class="btn btn-danger btn-sm float-end" (click)="removeIngredient(i)">Rimuovi</button>
-    </li>
-  </ul>
+  <div class="container">
 
+    <div class="row">
+      <div class="col-2 badge bg-light text-black mx-3 my-3" *ngFor="let ingredient of ingredientsList;
+        let i = index" type="button" (click)="removeIngredient(i)"> {{ ingredient }}
+      </div>
 
-  <button class="btn btn-primary my-4" type="button" (click)="searchRecipes()">
-    Cerca Ricette
-  </button>
+      <div class="row">
+      <button class="btn btn-primary my-4" type="button" (click)="searchRecipes()">
+        Cerca Ricette
+      </button>
+    </div>
+    </div>
+  </div>
 
   <div class="modal fade text-dark" id="noIngredientModal" tabindex="-1" aria-labelledby="noIngredientModalLabel"
     aria-hidden="true">
@@ -135,6 +145,16 @@
     </div>
   </div>
 
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <h3>Sii il primo a sapere e ricevere le nostre nuove ricette e nuove categoria da scoprire!</h3>
+      <input type="text" placeholder="Inserisci qui la tua e-mail">
+      <button class="btn orange">Subscribe</button>
+    </div>
+  </div>
 </div>
 
 <!-- FOOTER -->
