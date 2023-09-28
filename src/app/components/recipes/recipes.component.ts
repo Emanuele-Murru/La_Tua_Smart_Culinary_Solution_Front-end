@@ -13,8 +13,8 @@ export class RecipesComponent implements OnInit {
   @ViewChild('newRecipeModal') newRecipeModal!: ElementRef;
   showForms: boolean = false;
   selectedIngredients: Ingredient[] = [];
-
   page = 0;
+  selectedCategory: string | null = null;
 
   recipes: Recipe[] = [];
   newRecipe: Recipe = {
@@ -62,6 +62,17 @@ export class RecipesComponent implements OnInit {
     );
   }
 
+  // loadCategories(): void {
+  //   this.RecipeService.getRecipesByCategory(this.selectedCategory, 0, 'title').subscribe(
+  //     (recipes: Recipe[]) => {
+  //       this.recipes = recipes;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching recipes', error);
+  //     }
+  //   );
+  // }
+
   loadIngredients() {
     this.RecipeService.getIngredients(0, 'name').subscribe(
       (ingredients: Ingredient[]) => {
@@ -72,6 +83,11 @@ export class RecipesComponent implements OnInit {
         console.error('Error fetching ingredients', error);
       }
     );
+  }
+
+  filterRecipesByCategory(category: string | null): void {
+    this.selectedCategory = category;
+    this.loadRecipes();
   }
 
   addIngredientToList() {

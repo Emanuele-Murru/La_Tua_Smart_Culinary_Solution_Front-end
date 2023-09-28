@@ -27,7 +27,7 @@
 
             <div class="col-12 col-md-4 border rounded border-2 rectangles">
               <i class="bi bi-people-fill"></i>
-              <h5>Porzioni:</h5>
+              <h5>Portate:</h5>
               <span class="card-text">{{ recipe.servings }}</span>
             </div>
 
@@ -42,18 +42,30 @@
         <h2>
           Ingredients:
         </h2>
-        <ul *ngFor="let ingredient of recipe.ingredients">
+        <hr>
+        <!-- <ul *ngFor="let ingredient of recipe.ingredients">
           <li>Ingredient: {{ingredient.name}}</li>
           <li>Quantity: {{ingredient.quantity}}</li>
-        </ul>
+        </ul> -->
+        <div class="" *ngFor="let ingredient of recipe.ingredients">
+          <h4>{{ingredient.name}}: {{ingredient.quantity}}</h4>
+          <!-- <div>
+            <img src="{{ingredient.imgUrl}}" alt="{{ingredient.name}}">
+          </div> -->
+          <hr>
+        </div>
       </div>
 
-            <div class="col-12 col-md-6">
-              <h2>
-                Instructions:
-              </h2>
-              <p>{{recipe.instructions}}</p>
-            </div>
+      <div class="col-12 col-md-6">
+        <h2>
+          Instructions:
+        </h2>
+        <!-- <p>{{recipe.instructions}}</p> -->
+        <div class="detail-text">
+          <h3>{{ recipe.instructions }}</h3>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

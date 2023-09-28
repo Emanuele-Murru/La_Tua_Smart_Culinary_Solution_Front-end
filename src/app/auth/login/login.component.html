@@ -1,17 +1,17 @@
-<div class="container mt-5">
+<div class="container">
   <div class="row justify-content-center">
     <div class="form-container">
       <h3 class="text-center">CULINARY SOLUTION</h3>
       <hr>
       <p class="title">Login</p>
-      <form class="form">
+      <form>
         <div class="input-group">
           <label for="username">Email</label>
-          <input type="text" required name="email" id="email" [(ngModel)]="email" placeholder="">
+          <input type="text" class="form-control" required name="email" id="email" [(ngModel)]="email" placeholder="">
         </div>
         <div class="input-group">
           <label for="password">Password</label>
-          <input type="password" required name="password" id="password" [(ngModel)]="password" placeholder="">
+          <input type="password" class="form-control" required name="password" id="password" [(ngModel)]="password" placeholder="">
           <div class="forgot">
             <a rel="noopener noreferrer" href="#">Forgot Password ?</a>
           </div>

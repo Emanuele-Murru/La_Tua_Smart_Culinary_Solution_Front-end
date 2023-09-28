@@ -13,6 +13,9 @@ export class DetailPageComponent implements OnInit {
   recipe: Recipe | undefined;
   recipeId!:number;
 
+  instructions: string = "";
+  istruzioniFormattate = this.formattaTesto(this.instructions);
+
   constructor(private recipeSrv: RecipeService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -20,8 +23,15 @@ export class DetailPageComponent implements OnInit {
       this.recipeId = params['id'];
       this.recipeSrv.getRecipeById(this.recipeId).subscribe((recipe: any) => {
         this.recipe = recipe
+
+        this.recipe!.instructions = this.formattaTesto(recipe.instructions);
       })
     })
+  }
+
+  formattaTesto(testo: string): string {
+    const testoFormattato = testo.replace(/(\d\))/g, '\n$1');
+    return testoFormattato;
   }
 
 }

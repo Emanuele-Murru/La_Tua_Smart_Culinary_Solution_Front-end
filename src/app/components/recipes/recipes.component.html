@@ -23,11 +23,21 @@
 
 
     <div class="row">
+<!--
+      <select [(ngModel)]="selectedCategory" (change)="filterRecipesByCategory(selectedCategory)">
+        <option value="" disabled selected>Filtra per categorie</option>
+        <option value="ANTIPASTI">ANTIPASTI</option>
+        <option value="PRIMI">PRIMI</option>
+        <option value="SECONDI">SECONDI</option>
+        <option value="CONTORNI">CONTORNI</option>
+        <option value="DESSERTS">DESSERTS</option>
+      </select> -->
 
-      <div *ngFor="let recipe of recipes" class="col-xl-3 col-lg-6 col-md-6 col-12 text-center">
-        <div class="card my-5">
+
+      <div *ngFor="let recipe of recipes" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center my-4">
+        <div class="card h-100">
           <div>
-            <img src="{{recipe.imageUrl}}" class="img-fluid rounded" style="height: 300px;" alt="{{recipe.title}}">
+            <img src="{{recipe.imageUrl}}" class="img-fluid rounded object-fit-cover" style="height: 300px; width: 600px;" alt="{{recipe.title}}">
             <div>
               <div class="card-body">
                 <h5 class="card-title">Titolo: {{recipe.title}}</h5>

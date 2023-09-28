@@ -71,6 +71,18 @@ export class RecipeService {
     return this.http.get<Recipe>(`${this.urlRecipes}/${recipeId}`);
   }
 
+  // getRecipesByCategory(category: string | null, page: number, order: string): Observable<Recipe[]> {
+  //   let params = new HttpParams();
+  //   params = params.append('page', page.toString());
+  //   params = params.append('order', order);
+
+  //   if (category) {
+  //     params = params.append('category', category);
+  //   }
+
+  //   return this.http.get<Recipe[]>(`${this.urlRecipes}/byCategory`, { params });
+  // }
+
   searchRecipesByIngredients(ingredients: string[]): Observable<Recipe[]> {
     const params = new HttpParams().set('ingredients', ingredients.join(','));
     return this.http.get<Recipe[]>(`${this.urlRecipes}/search`, { params });

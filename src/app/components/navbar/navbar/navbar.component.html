@@ -29,16 +29,19 @@
         <img type="button" data-bs-toggle="dropdown" class="rounded-circle" id="avatarLogo" src="../../../../assets/img/man_4140037.png" alt="userImg"  data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
 
         <ul class="dropdown-menu dropdown-menu-end dropdown-avatar text-white">
-          <li><a class="dropdown-item" href="/user"><i class="bi bi-person me-2"></i>Profile</a></li>
+
+          <li><a class="dropdown-item" href="/users"><i class="bi bi-person me-2"></i>Profile</a></li>
           <li><a class="dropdown-item" href="#"><i class="bi bi-star me-2"></i>Recipes</a></li>
+
           <li>
               <hr class="dropdown-divider">
           </li>
+
           <li>
             <a class="m-1" (click)="logOut()" *ngIf="!showButtonsLog">
               <button id="logoutBtn" class="btn-sm border border-2 border-black" type="button">Logout</button>
             </a>
-        </li>
+          </li>
 
           <a href="/login" class="m-1" *ngIf="showButtonsLog">
             <button id="loginBtn" class="btn btn-light">Login</button>
@@ -47,11 +50,8 @@
           <a href="/register" class="m-1" *ngIf="showButtonsLog">
             <button id="registerBtn" class="btn btn-light">Register</button>
           </a>
-      </ul>
 
-        <!-- <a class="m-1" (click)="logOut()" *ngIf="!showButtonsLog">
-          <button id="logoutBtn" class="btn border border-2 border-black" type="button">Logout</button>
-        </a> -->
+      </ul>
 
       </div>
     </div>
