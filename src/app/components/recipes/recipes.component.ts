@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./recipes.component.scss'],
 })
 export class RecipesComponent implements OnInit {
-  @ViewChild('newRecipeModal') newRecipeModal!: ElementRef;
+
   showForms: boolean = false;
   selectedIngredients: Ingredient[] = [];
   page = 0;
@@ -35,10 +35,7 @@ export class RecipesComponent implements OnInit {
     imgUrl: ''
   };
 
-  constructor(
-    private RecipeService: RecipeService,
-    private AuthSrv: AuthService
-  ) {}
+  constructor(private RecipeService: RecipeService, private AuthSrv: AuthService) {}
 
   ngOnInit(): void {
     this.loadRecipes();
@@ -114,7 +111,6 @@ export class RecipesComponent implements OnInit {
   }
 
   createRecipe() {
-    // Creazione di una nuova ricetta con ingredienti esistenti
     const recipeToAdd: Recipe = {
       title: this.newRecipe.title,
       category: this.newRecipe.category,
@@ -167,7 +163,7 @@ export class RecipesComponent implements OnInit {
     );
   }
 
-  updateRecipe(id: number, recipe: Recipe) {
+  updateRecipe(id: number) {
     const updatedRecipe: Recipe = {
       title: this.newRecipe.title,
       category: this.newRecipe.category,
@@ -208,18 +204,14 @@ export class RecipesComponent implements OnInit {
     }
   }
 
-  openRecipeModal() {
-    this.newRecipeModal.nativeElement.classList.add('show');
-  }
-
   nextPage() {
-    this.page++; // Vai alla pagina successiva
+    this.page++;
     this.loadRecipes();
   }
 
   previousPage() {
     if (this.page > 0) {
-      this.page--; // Vai alla pagina precedente solo se non sei sulla prima pagina
+      this.page--;
       this.loadRecipes();
     }
   }

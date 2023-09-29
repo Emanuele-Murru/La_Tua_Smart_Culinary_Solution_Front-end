@@ -1,12 +1,18 @@
 @import '../../../mixsin.scss';
 
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .form-container {
   width: 350px;
   border-radius: 0.75rem;
   background-color: dodgerblue;
   padding: 2rem;
   color: rgba(243, 244, 246, 1);
-  margin-top: 15em;
 }
 
 h3 {

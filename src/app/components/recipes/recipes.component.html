@@ -23,7 +23,7 @@
 
 
     <div class="row">
-<!--
+      <!--
       <select [(ngModel)]="selectedCategory" (change)="filterRecipesByCategory(selectedCategory)">
         <option value="" disabled selected>Filtra per categorie</option>
         <option value="ANTIPASTI">ANTIPASTI</option>
@@ -34,8 +34,9 @@
       </select> -->
 
 
+      <!----------------------------------------------------------- RECIPE CARD ------------------------------------------>
       <div *ngFor="let recipe of recipes" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center my-4">
-        <div class="card h-100">
+        <div class="card box h-100">
           <div>
             <img src="{{recipe.imageUrl}}" class="img-fluid rounded object-fit-cover" style="height: 300px; width: 600px;" alt="{{recipe.title}}">
             <div>
@@ -46,12 +47,10 @@
                 <p class="card-text">Tempo di cottura: {{recipe.cookTime}}</p>
                 <p class="card-text"><small class="text-body-secondary">Portate: {{recipe.servings}}</small></p>
               </div>
-              <div class="text-center">
-                <button class="btn btn-danger m-2" *ngIf="(showForms)"
-                  (click)="deleteRecipe(recipe.id!)">Cancella</button>
-                <button class="btn btn-warning m-2" *ngIf="(showForms)"
-                  (click)="updateRecipe(newRecipe.id!, newRecipe)">Modifica</button>
-                <a routerLink='detail-page/{{recipe.id}}' type="button" class="btn btn-primary m-2">Info</a>
+              <div class="d-flex flex-row justify-content-center">
+                <button routerLink='detail-page/{{recipe.id}}' class="btn m-2"> Info
+                  <span></span>
+                </button>
               </div>
             </div>
           </div>
@@ -59,6 +58,7 @@
       </div>
     </div>
 
+    <!---------------------------------------------------------------- CREAZIONE RECIPE ---------------------------------------------->
     <div *ngIf="(showForms)">
 
       <form (submit)="createRecipe()">
@@ -68,7 +68,7 @@
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newRecipeModal">Aggiungi nuova
           ricetta</button>
 
-        <!-- Modale per creare una nuova ricetta -->
+        <!---------------------------- MODALE CREAZIONE RECIPE ------------------------------------------------>
         <div class="modal fade" id="newRecipeModal" tabindex="-1" aria-labelledby="newRecipeModalLabel"
           aria-hidden="true">
           <div class="modal-dialog modal-lg">
@@ -127,17 +127,10 @@
                       name="imageUrl" required>
                   </div>
 
-                  <div class="form-group">
-                    <label for="Ingredients">Ingredienti</label>
-                    <select class="form-control" [(ngModel)]="selectedIngredients" name="selectedIngredient" multiple>
-                      <option *ngFor="let ingredient of ingredients" [value]="ingredient">{{ ingredient.name }}</option>
-                    </select>
-                  </div>
-
-                  <!-- ?Form per creare un nuovo ingrediente -->
+                  <!-- Form per creare un nuovo ingrediente -->
                   <form>
                     <div class="form-group">
-                      <label for="newIngredient">Crea un nuovo ingrediente qui sotto</label>
+                      <label for="Ingredients">Ingredienti</label>
                       <input type="text" class="form-control" [(ngModel)]="newIngredient.name" name="name"
                         placeholder="Nome ingrediente" (input)=" newIngredient.name = formatInput(newIngredient.name)">
                       <input type="text" class="form-control" [(ngModel)]="newIngredient.quantity" name="quantity"
@@ -147,7 +140,7 @@
                       <button (click)="addIngredientToList()" class="btn btn-primary mt-3">Aggiungi ingrediente</button>
                     </div>
 
-                    <!--? Elenco degli ingredienti aggiunti -->
+                    <!-- Elenco degli ingredienti aggiunti -->
                     <hr>
                     <div>
                       <h4>Ingredienti aggiunti:</h4>

@@ -1,23 +1,24 @@
-<video autoplay loop muted id="myVideo" *ngIf="isFirstLoad">
+<video autoplay muted id="myVideo" *ngIf="isFirstLoad">
   <source src="../../../assets/videos/Homepage-video.mp4" type="video/mp4">
-  Il tuo browser non supporta la riproduzione del video.
 </video>
 
 <div id="banner" class="d-flex flex-column justify-content-end img-fluid" alt="immagine spezie banner">
   <img class="w-100" src="../../../assets/img/Benvenuto da (1).png" alt="">
 </div>
 
+<!-- GIF -->
 <div class="text-center">
-  <img class="img-fluid" src="http://1.bp.blogspot.com/-p1ydIkDBNro/URNUo0e4IjI/AAAAAAAAAS0/mK9GPV2TnZs/s1600/baker_dough.gif" alt="">
+  <img class="img-fluid" src="../../../assets/videos/baker_dough.gif" alt="">
 </div>
 
-<div class="description row d-flex flex-row align-items-center" id="getStarted">
+<!-- Get Started -->
+<div class="description row d-flex flex-row align-items-center">
 
   <div class="col-lg-6 col-md-12 col-12 text-center px-lg-5 my-4">
-    <h1>
+    <h2 class="fs-1">
       Benvenuto da...
       <br> <b>"LA TUA SMART CULINARY SOLUTION!"</b>
-    </h1>
+    </h2>
     <h2 class="my-3">
       Ancora una volta non sai cosa cucinare o cosa fare con gli ingredienti che stanno lì nel tuo frigo o nello
       scaffale?
@@ -26,7 +27,7 @@
       Nessun Problema....Ci penso io!
     </h2>
     <h2>
-      Inserisci qui sotto gli ingredienti e ti aiuterò a riempire quel buco nello stomaco!
+      Inserisci qui sotto gli ingredienti e ti aiuterò in questa ardua impresa!
     </h2>
   </div>
 
@@ -38,11 +39,14 @@
   </div>
 </div>
 
-<div class="container mb-5" id="contenitore">
-  <h2>Inserisci gli ingredienti</h2>
+
+<div class="container-fluid mb-5 text-center" id="contenitore">
+  <div class="container">
+  <div class="astrodivider"><div class="astrodividermask"></div><span><i>&#10038;</i></span></div>
+  <h1 class="">Inserisci gli ingredienti</h1>
   <div class="input-container my-4">
     <input type="text" [(ngModel)]="currentIngredient" (input)="currentIngredient = formatInput(currentIngredient)" (keydown.enter)="addIngredient($event)" placeholder="Aggiungi ingrediente">
-    <button class="button" (click)="addIngredient($event)">Aggiungi</button>
+    <button class="button d-flex justify-content-center" (click)="addIngredient($event)">Aggiungi</button>
   </div>
 
 
@@ -58,13 +62,17 @@
         </div>
       </div>
 
-      <div class="row">
-      <button class="col-2 btn btn-primary my-4" type="button" (click)="searchRecipes()">
+      <div class="row d-flex justify-content-center"  id="findRecipes">
+      <!-- <button class="col-2 btn btn-primary my-4" type="button" (click)="searchRecipes()">
         Cerca Ricette
-      </button>
+      </button> -->
+      <button class="col-2 btn btn-primary my-4" type="button" (click)="searchRecipes()">
+        <a>Cerca ricette</a>
+    </button>
     </div>
     </div>
   </div>
+
 
   <!-- Modale Ingredienti non trovati -->
   <div class="modal fade text-dark" id="noIngredientModal" tabindex="-1" aria-labelledby="noIngredientModalLabel"
@@ -87,6 +95,8 @@
     </div>
   </div>
 
+  <div class="astrodivider"><div class="astrodividermask"></div><span><i>&#10038;</i></span></div>
+</div>
   <div *ngIf="recipesWithExactIngredients.length > 0">
 
     <h2>Ricette con gli ingredienti specificati:</h2>
@@ -94,7 +104,7 @@
     <div class="row">
 
       <div *ngFor="let recipe of recipesWithAnyIngredients" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center">
-        <div class="card cardRecipes my-4">
+        <div class="card box h100 my-4">
           <div>
             <img src="{{recipe.imageUrl}}" class="img-fluid rounded object-fit-cover" style="height: 300px; width: 600px;" alt="...">
             <div>
@@ -105,8 +115,10 @@
                 <p class="card-text">Tempo di cottura: {{recipe.cookTime}}</p>
                 <p class="card-text"><small class="text-body-secondary">Portate: {{recipe.servings}}</small></p>
               </div>
-              <div class="text-center">
-                <a routerLink='detail-page/{{recipe.id}}' type="button" class="btn btn-primary m-2">Info</a>
+              <div class="d-flex flex-row justify-content-center">
+                <button routerLink='detail-page/{{recipe.id}}' class="btn m-2"> Info
+                  <span></span>
+                </button>
               </div>
             </div>
           </div>
@@ -120,7 +132,7 @@
     <div class="row">
       <h2>Ricette con almeno uno degli ingredienti specificati:</h2>
       <div *ngFor="let recipe of recipesWithAnyIngredients" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center my-3">
-        <div class="card cardRecipes my-4">
+        <div class="card box h100 my-4">
           <div>
             <img src="{{recipe.imageUrl}}" class="img-fluid rounded object-fit-cover" style="height: 300px; width: 600px;" alt="...">
             <div>
@@ -131,8 +143,10 @@
                 <p class="card-text">Tempo di cottura: {{recipe.cookTime}}</p>
                 <p class="card-text"><small class="text-body-secondary">Portate: {{recipe.servings}}</small></p>
               </div>
-              <div class="text-center">
-                <a routerLink='../recipes/detail-page/{{recipe.id}}' type="button" class="btn btn-primary m-2">Info</a>
+              <div class="d-flex flex-row justify-content-center">
+                <button routerLink='detail-page/{{recipe.id}}' class="btn m-2"> Info
+                  <span></span>
+                </button>
               </div>
             </div>
           </div>
@@ -143,13 +157,28 @@
 
 </div>
 
+<!-- GIF -->
+<div class="text-center background">
+  <img class="img-fluid" src="../../../assets/videos/baker-whisk01.gif" alt="">
+</div>
+
 <!-- Newsletter -->
 <div class="container my-5">
-  <div class="mt-4 p-5 bg-primary text-white rounded-5">
+  <div class="mt-4 p-5 newsLetter rounded-5">
     <h3>Sii il primo a sapere e ricevere le nostre nuove ricette e nuove categoria da scoprire!</h3>
     <div class="input-group my-3">
       <input type="email" class="form-control" placeholder="Inserisci qui la tua e-mail">
-      <button class="btn btn-dark" type="button" id="button-addon2">Button</button>
+      <button>
+        <div class="svg-wrapper-1">
+          <div class="svg-wrapper">
+            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z" fill="currentColor"></path>
+            </svg>
+          </div>
+        </div>
+        <span>Send</span>
+      </button>
     </div>
   </div>
 </div>

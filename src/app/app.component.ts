@@ -12,7 +12,7 @@ export class AppComponent {
 
     shouldShowNavbar(): boolean {
       const currentRoute = this.router.url;
-      return currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/navbar'
+      return currentRoute !== '/' && currentRoute !== '/register' && currentRoute !== '/navbar'
     }
 
     ngOnInit(): void {
