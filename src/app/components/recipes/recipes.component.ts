@@ -59,17 +59,6 @@ export class RecipesComponent implements OnInit {
     );
   }
 
-  // loadCategories(): void {
-  //   this.RecipeService.getRecipesByCategory(this.selectedCategory, 0, 'title').subscribe(
-  //     (recipes: Recipe[]) => {
-  //       this.recipes = recipes;
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching recipes', error);
-  //     }
-  //   );
-  // }
-
   loadIngredients() {
     this.RecipeService.getIngredients(0, 'name').subscribe(
       (ingredients: Ingredient[]) => {
@@ -82,10 +71,22 @@ export class RecipesComponent implements OnInit {
     );
   }
 
-  filterRecipesByCategory(category: string | null): void {
-    this.selectedCategory = category;
-    this.loadRecipes();
-  }
+filterRecipesByCategory(category: string | null): void {
+  this.selectedCategory = category;
+  this.loadRecipesByCategory();
+}
+
+loadRecipesByCategory() {
+  this.RecipeService.getRecipesByCategory(this.selectedCategory, this.page, 'title').subscribe(
+    (recipes: Recipe[]) => {
+      console.log(recipes);
+      this.recipes = recipes;
+    },
+    (error) => {
+      console.error('Error fetching recipes', error);
+    }
+  );
+}
 
   addIngredientToList() {
     if (this.newIngredient.name) {

@@ -31,7 +31,7 @@ export class RecipeService {
     .set('page', page.toString())
     .set('order', order);
     const headers = new HttpHeaders({
-      Autorization: `Bearer ${localStorage.getItem('token')}`
+      Authorization: `Bearer ${localStorage.getItem('token')}`
     });
     return this.http.get<any>(this.urlIngredients, { params, headers})
     .pipe(map(response => response.content));
@@ -71,17 +71,19 @@ export class RecipeService {
     return this.http.get<Recipe>(`${this.urlRecipes}/${recipeId}`);
   }
 
-  // getRecipesByCategory(category: string | null, page: number, order: string): Observable<Recipe[]> {
-  //   let params = new HttpParams();
-  //   params = params.append('page', page.toString());
-  //   params = params.append('order', order);
+  getRecipesByCategory(category: string | null, page: number, order: string): Observable<Recipe[]> {
+    const params = new HttpParams()
+      .set('category', category || '')
+      .set('page', page.toString())
+      .set('order', order);
 
-  //   if (category) {
-  //     params = params.append('category', category);
-  //   }
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    });
 
-  //   return this.http.get<Recipe[]>(`${this.urlRecipes}/byCategory`, { params });
-  // }
+    return this.http.get<any>(`${this.urlRecipes}/byCategory`, { params, headers })
+      .pipe(map(response => response.content));
+  }
 
   searchRecipesByIngredients(ingredients: string[]): Observable<Recipe[]> {
     const params = new HttpParams().set('ingredients', ingredients.join(','));

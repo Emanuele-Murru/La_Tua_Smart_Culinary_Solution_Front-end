@@ -21,9 +21,4 @@ export class UsersComponent implements OnInit {
     })
 
   }
-
-  // logOut() {
-  //   this.authService.logout();
-  // }
-
 }

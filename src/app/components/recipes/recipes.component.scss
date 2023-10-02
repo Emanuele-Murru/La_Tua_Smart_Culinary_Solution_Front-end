@@ -28,11 +28,9 @@
   font-size: 18px;
   background: transparent;
   cursor: pointer;
-  user-select: none;
   overflow: hidden;
   color: royalblue;
   z-index: 1;
-  font-family: inherit;
   font-weight: 500;
 }
 
@@ -80,11 +78,10 @@ button:active span::before {
 }
 
 .box {
-  // background: #f5f5dc;
   background: rgb(235,188,140);
   background: linear-gradient(139deg, rgba(235,188,140,1) 31%, rgba(181,219,238,1) 62%);
-  // border: 1px solid rgba(255, 255, 255, 0.222);
-  // backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.222);
+  backdrop-filter: blur(20px);
   border-radius: .7rem;
   transition: all ease .3s;
 }
