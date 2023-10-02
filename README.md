@@ -13,7 +13,7 @@ Benvenuti su Culinay Solution! Un applicazione creata per tutte quelle volte che
 # Come funziona:
 Bisogna come prima step effettuare il login, dopodichè è possibile effettuare la ricerca delle ricette in base agli ingredienti inseriti una volta nel form presente nella homepage (⬇️Vedi qui sotto immagine⬇️)
 
-<img src="https://res.cloudinary.com/dqb58ynfc/image/upload/v1695998139/yyb8obidhadja02hssat.png">
+<img src="https://res.cloudinary.com/dqb58ynfc/image/upload/v1695998139/pafwm19yasufo2andqdp.png">
 
  Tuttavia è possibile visualizzare e filtrare le ricette senza effettuare il login 😊
 
