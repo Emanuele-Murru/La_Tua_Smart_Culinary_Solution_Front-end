@@ -2,7 +2,7 @@
 
 Backend repository link: https://github.com/Emanuele-Murru/La_Tua_Smart_Culinary_Solution_Back-end
 
-<img src="https://res.cloudinary.com/dqb58ynfc/image/upload/v1696264651/px9z1suoi1uth5bpqfod.png"">
+<img src="https://res.cloudinary.com/dqb58ynfc/image/upload/v1696264651/px9z1suoi1uth5bpqfod.png">
 
 # Descrizione
 
