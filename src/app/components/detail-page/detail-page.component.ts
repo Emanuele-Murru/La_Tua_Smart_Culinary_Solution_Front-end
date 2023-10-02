@@ -12,7 +12,7 @@ import { RecipeService } from 'src/app/services/recipe.service';
 })
 export class DetailPageComponent implements OnInit {
 
-  recipe: Recipe | undefined;
+  recipe!: Recipe;
   recipeId!:number;
   showForms: boolean = false;
   page = 0;
@@ -78,13 +78,13 @@ export class DetailPageComponent implements OnInit {
 
   updateRecipe(id: number) {
     const updatedRecipe: Recipe = {
-      title: this.newRecipe.title,
-      category: this.newRecipe.category,
-      instructions: this.newRecipe.instructions,
-      prepTime: this.newRecipe.prepTime,
-      cookTime: this.newRecipe.cookTime,
-      servings: this.newRecipe.servings,
-      imageUrl: this.newRecipe.imageUrl,
+      title: this.recipe.title,
+      category: this.recipe.category,
+      instructions: this.recipe.instructions,
+      prepTime: this.recipe.prepTime,
+      cookTime: this.recipe.cookTime,
+      servings: this.recipe.servings,
+      imageUrl: this.recipe.imageUrl,
       ingredients: this.selectedIngredients
     };
 

@@ -86,12 +86,12 @@
               <form (submit)="updateRecipe(recipe.id!)">
                 <div class="form-group">
                   <label for="Title">Titolo</label>
-                  <input type="text" class="form-control" id="title" [(ngModel)]="newRecipe.title" name="title" required>
+                  <input type="text" class="form-control" id="title" [(ngModel)]="recipe.title" name="title" required>
                 </div>
 
                 <div class="form-group">
                   <label for="category">Categoria</label>
-                  <select class="form-control" id="category" [(ngModel)]="newRecipe.category" name="category" required>
+                  <select class="form-control" id="category" [(ngModel)]="recipe.category" name="category" required>
                     <option value="ANTIPASTI">ANTIPASTI</option>
                     <option value="PRIMI">PRIMI</option>
                     <option value="SECONDI">SECONDI</option>
@@ -102,31 +102,31 @@
 
                 <div class="form-group">
                   <label for="Instructions">Istruzioni</label>
-                  <input type="text" class="form-control" id="instructions" [(ngModel)]="newRecipe.instructions"
+                  <input type="text" class="form-control" id="instructions" [(ngModel)]="recipe.instructions"
                     name="instructions" required>
                 </div>
 
                 <div class="form-group">
                   <label for="PrepTime">Tempo di preparazione</label>
-                  <input type="text" class="form-control" id="prepTime" [(ngModel)]="newRecipe.prepTime" name="prepTime"
+                  <input type="text" class="form-control" id="prepTime" [(ngModel)]="recipe.prepTime" name="prepTime"
                     required>
                 </div>
 
                 <div class="form-group">
                   <label for="CookTime">Tempo di cottura</label>
-                  <input type="text" class="form-control" id="cookTime" [(ngModel)]="newRecipe.cookTime" name="cookTime"
+                  <input type="text" class="form-control" id="cookTime" [(ngModel)]="recipe.cookTime" name="cookTime"
                     required>
                 </div>
 
                 <div class="form-group">
                   <label for="Servings">Portate</label>
-                  <input type="text" class="form-control" id="servings" [(ngModel)]="newRecipe.servings" name="servings"
+                  <input type="text" class="form-control" id="servings" [(ngModel)]="recipe.servings" name="servings"
                     required>
                 </div>
 
                 <div class="form-group">
                   <label for="ImageUrl">Image url</label>
-                  <input type="text" class="form-control" id="imageUrl" [(ngModel)]="newRecipe.imageUrl" name="imageUrl"
+                  <input type="text" class="form-control" id="imageUrl" [(ngModel)]="recipe.imageUrl" name="imageUrl"
                     required>
                 </div>
 
@@ -158,19 +158,14 @@
                   </div>
                 </form>
 
+                <hr>
+
                 <div class="mt-3">
                   <button type="submit" class="btn btn-primary">Salva</button>
-                  <button type="button" class="btn btn-secondary">Annulla</button>
+                  <button type="reset" class="btn btn-danger ms-3">Reset</button>
                 </div>
               </form>
-
-              <hr>
-
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Chiudi</button>
-            <button type="submit" class="btn btn-primary">Salva</button>
           </div>
         </div>
       </div>
