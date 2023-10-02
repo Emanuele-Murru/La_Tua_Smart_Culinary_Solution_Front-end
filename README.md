@@ -1,6 +1,6 @@
 # Culinary Solution 🍲📋
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.11.
+Backend repository link: https://github.com/Emanuele-Murru/La_Tua_Smart_Culinary_Solution_Back-end
 
 # Descrizione
 
