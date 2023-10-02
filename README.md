@@ -24,11 +24,26 @@ Bisogna come prima step effettuare il login 🔐🗝️, dopodichè è possibile
 
 # Requisiti di sistema:
 Prima di iniziare assicurati di aver installato:
-- Node.js
-- npm
 - Java
 - Angular
+- Node.js
+- npm
 
-## Development server
+## Configurazione BACK-END:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Per configurare il progetto Java, è necessario importarlo nel proprio IDE preferito come progetto Maven.
+- La struttura di base del progetto è stata generata utilizzando https://start.spring.io.
+- Assicurarsi di avere installato correttamente Lombok nel proprio ambiente di sviluppo. Istruzioni per l'istallazione su https://projectlombok.org.
+- Crea un file denominato env.properties da posizionare nella directory principale del progetto Java. Successivamente, imposta i valori necessari per eseguire il programma. I valori contrassegnati con * sono a discrezione dell'utente, ma è importante mantenere coerenza con l'ambiente circostante.
+```
+
+Ecco un esempio di file env.properties:
+
+PORT=3001
+
+PG_DB=db_nome
+PG_USERNAME=il_tuo_db_username
+PG_PASSWORD=la_tua_db_password
+JWT_SECRET=la_tua_secret_key
+
+```
