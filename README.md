@@ -35,10 +35,10 @@ Prima di iniziare assicurati di aver installato:
 - La struttura di base del progetto è stata generata utilizzando https://start.spring.io.
 - Assicurarsi di avere installato correttamente Lombok nel proprio ambiente di sviluppo. Istruzioni per l'istallazione su https://projectlombok.org.
 - Crea un file denominato env.properties da posizionare nella directory principale del progetto Java. Successivamente, imposta i valori necessari per eseguire il programma.
-```
 
 Ecco un esempio di file env.properties:
 
+```
 PORT=3001
 
 PG_DB=db_nome
