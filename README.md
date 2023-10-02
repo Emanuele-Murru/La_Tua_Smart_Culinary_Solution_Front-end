@@ -16,7 +16,7 @@ Benvenuti su Culinay Solution! Un applicazione creata per tutte quelle volte che
 - Match degli Ingredienti: Trova ricette in base agli ingredienti che hai a disposizione. Ottieni suggerimenti creativi per utilizzare gli ingredienti rimasti nel tuo frigorifero! 🥦🍅
 
 # Come funziona:
-Bisogna come prima step effettuare il login, dopodichè è possibile effettuare la ricerca delle ricette in base agli ingredienti inseriti una volta nel form presente nella homepage (⬇️Vedi qui sotto immagine⬇️)
+Bisogna come prima step effettuare il login 🔐🗝️, dopodichè è possibile effettuare la ricerca 🔎 delle ricette in base agli ingredienti inseriti una volta nel form presente nella homepage (⬇️Vedi qui sotto immagine⬇️)
 
 <img src="https://res.cloudinary.com/dqb58ynfc/image/upload/v1695998139/pafwm19yasufo2andqdp.png">
 
