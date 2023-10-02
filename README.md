@@ -2,6 +2,8 @@
 
 Backend repository link: https://github.com/Emanuele-Murru/La_Tua_Smart_Culinary_Solution_Back-end
 
+<img href="https://res.cloudinary.com/dqb58ynfc/image/upload/v1696264351/bukwyccpiporcphktt8k.png">
+
 # Descrizione
 
 Benvenuti su Culinay Solution! Un applicazione creata per tutte quelle volte che ci si sente indecisi e confusi davanti al frigo o alla propria dispensa, insomma progettata per semplificare le proprie esperienze culinarie, che tu sia uno Chef esperto o un principiante in cucina questa app è qui per aiutarti a scoprire e organizzare le tue ricette prefetite. 🍽️
