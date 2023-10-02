@@ -10,17 +10,17 @@ Benvenuti su Culinay Solution! Un applicazione creata per tutte quelle volte che
 
 <img src="https://res.cloudinary.com/dqb58ynfc/image/upload/v1695998139/yyb8obidhadja02hssat.png">
 
+# Funzionalità principali
+- Visualizza ricette: Sfoglia tra le ricette presenti!🍝
+- Filtri: Filtra le ricette in base alla categoria desiderata, che tu stia cercando antipasti sfiziosi o dessert deliziosi! 🍰🍴
+- Match degli Ingredienti: Trova ricette in base agli ingredienti che hai a disposizione. Ottieni suggerimenti creativi per utilizzare gli ingredienti rimasti nel tuo frigorifero! 🥦🍅
+
 # Come funziona:
 Bisogna come prima step effettuare il login, dopodichè è possibile effettuare la ricerca delle ricette in base agli ingredienti inseriti una volta nel form presente nella homepage (⬇️Vedi qui sotto immagine⬇️)
 
 <img src="https://res.cloudinary.com/dqb58ynfc/image/upload/v1695998139/pafwm19yasufo2andqdp.png">
 
  Tuttavia è possibile visualizzare e filtrare le ricette senza effettuare il login 😊
-
-# Funzionalità principali
-- Visualizza ricette: Sfoglia tra le ricette presenti!🍝
-- Filtri: Filtra le ricette in base alla categoria desiderata, che tu stia cercando antipasti sfiziosi o dessert deliziosi! 🍰🍴
-- Match degli Ingredienti: Trova ricette in base agli ingredienti che hai a disposizione. Ottieni suggerimenti creativi per utilizzare gli ingredienti rimasti nel tuo frigorifero! 🥦🍅
 
 # Requisiti di sistema:
 Prima di iniziare assicurati di aver installato:
