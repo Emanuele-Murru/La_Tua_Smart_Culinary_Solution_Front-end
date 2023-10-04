@@ -11,11 +11,17 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUserData(userId: number): Observable <any> {
+  getUserData(userId: string): Observable <any> {
     return this.http.get<any>(`${this.apiUrl}/${userId}`);
   }
 
   getCurrentUserData(): Observable<any> {
     return this.http.get<any>('http://localhost:3001/user/current');
   }
+
+  updateUserData(userId: string, data: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${userId}`, data);
+  }
+
+
 }
