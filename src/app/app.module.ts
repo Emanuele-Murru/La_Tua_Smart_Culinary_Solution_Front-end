@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { Route, RouterModule } from '@angular/router';
@@ -10,41 +10,46 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar/navbar.component';
 import { UsersComponent } from './components/user/users/users.component';
-import { AppService } from './services/app.service';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { RecipesComponent } from './components/recipes/recipes.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { AuthGuard } from './auth/auth.guard';
+import { DetailPageComponent } from './components/detail-page/detail-page.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 const routes: Route[] = [
-    {
-      path: '',
-      redirectTo: 'register',
-      pathMatch: 'full'
-    },
-    {
-      path: 'users',
-      component: UsersComponent,
-      // canActivate: [AuthGuard]
-    },
-    {
-      path: 'recipes',
-      component: RecipesComponent,
-      // canActivate: [AuthGuard]
-    },
-    {
-      path: 'navbar',
-      component: NavbarComponent,
-      // canActivate: [AuthGuard]
-    },
-    {
-      path: 'login',
-      component: LoginComponent,
-      // canActivate: [AuthGuard]
-    },
-    {
-      path: 'register',
-      component: RegisterComponent
-    }
-]
+  {
+    path: 'homepage',
+    component: HomepageComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: '',
+    component: LoginComponent
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'recipes',
+    component: RecipesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'recipes/detail-page/:id',
+    component: DetailPageComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    component: ErrorPageComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -52,7 +57,11 @@ const routes: Route[] = [
     UsersComponent,
     NavbarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    RecipesComponent,
+    HomepageComponent,
+    DetailPageComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,18 +72,18 @@ const routes: Route[] = [
       config: {
         tokenGetter: () => localStorage.getItem('token'),
         allowedDomains: ['localhost:3001'],
-        disallowedRoutes: []
-      }
-    })
+        disallowedRoutes: [],
+      },
+    }),
   ],
   providers: [
-    AppService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
+    AuthGuard
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

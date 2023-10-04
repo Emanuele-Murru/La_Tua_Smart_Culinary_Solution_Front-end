@@ -1,0 +1,12 @@
+@import '../../../../mixsin.scss';
+
+.card {
+  padding: 3em;
+  background-color: dodgerblue;
+
+  h4{
+    display: inline;
+    font-size: 1.1em;
+    color: color(orangeText);
+  }
+}

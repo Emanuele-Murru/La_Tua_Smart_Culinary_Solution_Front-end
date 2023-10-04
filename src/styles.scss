@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #d0e5ef;
+}
+
+@import "mixsin.scss";
+
+:root {
+  --color-orangeText: #ee980f;
+  --color-navbarColor: #004879;
+  --color-secondaryColor: #98bad7;
+}

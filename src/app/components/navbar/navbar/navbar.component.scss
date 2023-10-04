@@ -1,13 +1,117 @@
-header {
-  background-image: url(../../../../assets/img/todd-quackenbush-x5SRhkFajrA-unsplash.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  object-fit: contain;
-  height: 700px;
-  width: 100%;
-  .jumbotron{
-    margin-top: 180px;
+@import "../../../../mixsin.scss";
 
-  }
+#navText {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5em;
+  margin: 0;
+  color: color(orangeText);
+}
+
+#avatarLogo {
+  width: 65px;
+  height: 65px;
+}
+
+.dropdown-avatar {
+  margin-right: 140px;
+  background-color: color(orangeText);
+}
+.orange {
+  color: color(orangeText);
+}
+
+.navbar {
+  transition: all 0.8s;
+  padding: 0 8%;
+}
+
+.navbar-scroll {
+  transition: all 0.1s;
+  background-color: #004879;
+}
+
+.navbar-hp-scroll {
+  transition: all 1s;
+  background: rgb(245,245,220);
+  background: -moz-linear-gradient(207deg, rgba(245,245,220,1) 27%, rgba(112,128,144,1) 84%, rgba(77,80,82,1) 97%);
+  background: -webkit-linear-gradient(207deg, rgba(245,245,220,1) 27%, rgba(112,128,144,1) 84%, rgba(77,80,82,1) 97%);
+  background: linear-gradient(207deg, rgba(245,245,220,1) 27%, rgba(112,128,144,1) 84%, rgba(77,80,82,1) 97%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f5f5dc",endColorstr="#4d5052",GradientType=1);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+#logoutBtn {
+  padding: 0.1em 1.3em;
+  margin: 0.2rem 1.1rem;
+  font-family: 'Mooli', sans-serif;
+  font-size: 1.35em;
+  color: #000;
+  background-color: color(orangeText);
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+#logoutBtn:hover {
+  background-color: #A91101;
+  box-shadow: 0px 15px 20px rgba(236, 13, 13, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+#logoutBtn:active {
+  transform: translateY(-1px);
+}
+
+#registerBtn {
+  padding: 0.1em 1.3em;
+  font-family: 'Mooli', sans-serif;
+  font-size: 1.35em;
+  color: #000;
+  background-color: royalblue;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+#registerBtn:hover {
+  background-color: royalblue;
+  box-shadow: 0px 15px 20px rgba(236, 13, 13, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+#registerBtn:active {
+  transform: translateY(-1px);
+}
+
+#loginBtn {
+  padding: 0.1em 1.3em;
+  font-family: 'Mooli', sans-serif;
+  font-size: 1.35em;
+  color: #000;
+  background-color: #198754;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+#loginBtn:hover {
+  background-color: #198754;
+  box-shadow: 0px 15px 20px rgba(236, 13, 13, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+#loginBtn:active {
+  transform: translateY(-1px);
 }

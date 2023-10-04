@@ -8,12 +8,13 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent {
   title = 'CapstoneProject';
-
   constructor(private router: Router) {}
 
     shouldShowNavbar(): boolean {
       const currentRoute = this.router.url;
-      return currentRoute !== '/login' && currentRoute !== '/register' && currentRoute !== '/navbar'
+      return currentRoute !== '/' && currentRoute !== '/register' && currentRoute !== '/navbar'
     }
-  }
 
+    ngOnInit(): void {
+  }
+}

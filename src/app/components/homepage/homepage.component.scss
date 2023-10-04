@@ -1,0 +1,570 @@
+ @import '../../../mixsin.scss';
+
+ #myVideo {
+   min-width: 100%;
+   min-height: 40%;
+   width: 100%;
+ }
+
+.bannerText {
+  font-size: 3em;
+  color: #fafafa;
+}
+
+// ---------------------------------------------------------------- Get started
+.description {
+  margin: 100px auto;
+  background-color: #98bad7;
+  min-height: 500px;
+
+  b {
+    color: royalblue;
+  }
+
+  img {
+    max-width: 550px;
+    max-height: 400px;
+    border-radius: 50px;
+  }
+}
+
+// ---------------------------------------------------------------- Modal
+.modal {
+  background: rgb(245,245,220);
+  background: -moz-linear-gradient(207deg, rgba(245,245,220,1) 27%, rgba(112,128,144,1) 84%, rgba(77,80,82,1) 97%);
+  background: -webkit-linear-gradient(207deg, rgba(245,245,220,1) 27%, rgba(112,128,144,1) 84%, rgba(77,80,82,1) 97%);
+  background: linear-gradient(207deg, rgba(245,245,220,1) 27%, rgba(112,128,144,1) 84%, rgba(77,80,82,1) 97%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f5f5dc",endColorstr="#4d5052",GradientType=1);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+.customModal {
+  background-color: #F5F5DC;
+}
+
+.card {
+  cursor: pointer;
+
+  button {
+  border: none;
+  display: block;
+  position: relative;
+  padding: 0.7em 2.4em;
+  font-size: 18px;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  color: royalblue;
+  z-index: 1;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+button span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: -1;
+  border: 4px solid royalblue;
+}
+
+button span::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8%;
+  height: 500%;
+  background: #b5dbee;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-60deg);
+  transition: all 0.3s;
+}
+
+button:hover span::before {
+  transform: translate(-50%, -50%) rotate(-90deg);
+  width: 100%;
+  background: royalblue;
+}
+
+button:hover {
+  color: white;
+}
+
+button:active span::before {
+  background: #2751cd;
+}
+}
+
+.card:hover {
+  transform: translateY(-20px);
+}
+
+.box {
+  background: rgb(235,188,140);
+  background: linear-gradient(139deg, rgba(235,188,140,1) 31%, rgba(181,219,238,1) 62%);
+  border-radius: .7rem;
+  transition: all ease .3s;
+}
+
+.box:hover {
+  box-shadow: 0px 0px 30px 10px #f5f5dc;
+  border: 1px solid #f5f5dc;
+}
+
+
+#contenitore {
+  padding: 0 5em;
+}
+
+// ---------------------------------------------------------------- Newsletter
+.newsLetter {
+  background-color: #98bad7;
+  color: rgb(71, 71, 71);
+
+  button {
+    font-family: inherit;
+    font-size: 18px;
+    background: royalblue;
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+
+  button span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+  }
+
+  button svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  button:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+  }
+
+  button:hover svg {
+    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+  }
+
+  button:hover span {
+    transform: translateX(5em);
+  }
+
+  button:active {
+    transform: scale(0.95);
+  }
+
+  @keyframes fly-1 {
+    from {
+      transform: translateY(0.1em);
+    }
+
+    to {
+      transform: translateY(-0.1em);
+    }
+  }
+
+
+}
+
+// ---------------------------------------------------------------- Back to top
+#goToTop {
+
+  button {
+    width: 140px;
+    height: 56px;
+    overflow: hidden;
+    border: none;
+    color: #fff;
+    background: none;
+    position: relative;
+    padding-bottom: 2em;
+  }
+
+  button > div,button > svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  button:before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    background: currentColor;
+    transition: transform 0.25s ease-out;
+  }
+
+  button:hover:before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  button .clone > *,button .text > * {
+    opacity: 1;
+    font-size: 1.3rem;
+    transition: 0.2s;
+    margin-left: 4px;
+  }
+
+  button .clone > * {
+    transform: translateY(60px);
+  }
+
+  button:hover .clone > * {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+  }
+
+  button:hover .text > * {
+    opacity: 1;
+    transform: translateY(-60px);
+    transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+  }
+
+  button:hover .clone > :nth-child(1) {
+    transition-delay: 0.15s;
+  }
+
+  button:hover .clone > :nth-child(2) {
+    transition-delay: 0.2s;
+  }
+
+  button:hover .clone > :nth-child(3) {
+    transition-delay: 0.25s;
+  }
+
+  button:hover .clone > :nth-child(4) {
+    transition-delay: 0.3s;
+  }
+
+  button svg {
+    width: 20px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(-50deg);
+    transition: 0.2s ease-out;
+  }
+
+  button:hover svg {
+    transform: translateY(-50%) rotate(-90deg);
+  }
+}
+
+// ---------------------------------------------------------- Input and button add Ingredient
+.input-container {
+  display: flex;
+  background: white;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #23272F 0%, #14161a 100%);
+  box-shadow: 1px 1px 10px #0e1013, -1px -1px 10px #383e4b;
+  padding: 0.3rem;
+  gap: 0.3rem;
+}
+
+.input-container input {
+  border-radius: 0.8rem 0 0 0.8rem;
+  background: #23272F;
+  box-shadow: inset 1px 10px 3px #0e1013, inset -1px -1px 3px #383e4b, 0px 0px 50px rgba(255, 212, 59, 0), 0px 0px 50px rgba(255, 102, 0, 0);
+  width: 100%;
+  flex-basis: 75%;
+  padding: 1rem;
+  border: none;
+  border: 1px solid transparent;
+  color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.input-container input:focus {
+  border: 1px solid #FFD43B;
+  outline: none;
+  box-shadow: inset 0px 0px 5px rgba(255, 102, 0, 0.5), inset 0px 0px 5px rgba(255, 212, 59, 0.5), 0px 0px 10px rgba(255, 212, 59, 0.5), 0px 0px 100px rgba(255, 102, 0, 0.5);
+}
+
+.input-container button {
+  flex-basis: 25%;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgb(255, 212, 59) 0%, rgb(255, 102, 0) 100%);
+  box-shadow: 0px 0px 1px rgba(255, 212, 59, 0.5), 0px 0px 1px rgba(255, 102, 0, 0.5);
+  font-weight: 900;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  color: #23272F;
+  border: none;
+  width: 100%;
+  border-radius: 0 1rem 1rem 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.input-container button:hover {
+  background: linear-gradient(135deg, rgb(255, 212, 59) 50%, rgb(255, 102, 0) 100%);
+  box-shadow: 0px 0px 15px rgba(255, 212, 59, 0.5), 0px 0px 15px rgba(255, 102, 0, 0.5);
+}
+
+@media (max-width: 500px) {
+  .input-container {
+    flex-direction: column;
+  }
+
+  .input-container input {
+    border-radius: 0.8rem;
+  }
+
+  .input-container button {
+    padding: 1rem;
+    border-radius: 0.8rem;
+  }
+}
+
+        // --------------------------------------------------------------------- Footer
+        .text-small {
+          font-size: 0.9rem;
+        }
+
+        a {
+          color: inherit;
+          text-decoration: none;
+          transition: all 0.3s;
+        }
+
+        a:hover, a:focus {
+          text-decoration: none;
+        }
+
+        footer {
+          background: color(navbarColor);
+        }
+
+    // --------------------------------------------------------------------- Contact buttons
+    .main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5em;
+    }
+
+    .up {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5em;
+    }
+
+    .down {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5em;
+    }
+
+    .card1 {
+      width: 90px;
+      height: 90px;
+      outline: none;
+      border: none;
+      background: white;
+      border-radius: 90px 5px 5px 5px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      transition: .2s ease-in-out;
+    }
+
+    .linkedin {
+      font-size: 1.5em;
+      color: #0a66c2;
+    }
+
+    .card2 {
+      width: 90px;
+      height: 90px;
+      outline: none;
+      border: none;
+      background: white;
+      border-radius: 5px 90px 5px 5px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      transition: .2s ease-in-out;
+    }
+
+    .email {
+      font-size: 1.5em;
+      margin-top: 1.5em;
+      margin-left: -.9em;
+      color: color(orangeText);
+    }
+
+    .card3 {
+      width: 90px;
+      height: 90px;
+      outline: none;
+      border: none;
+      background: white;
+      border-radius: 5px 5px 5px 90px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      transition: .2s ease-in-out;
+    }
+
+    .github {
+      margin-top: -.6em;
+      margin-left: 1.2em;
+    }
+
+    .card4 {
+      width: 90px;
+      height: 90px;
+      outline: none;
+      border: none;
+      background: white;
+      border-radius: 5px 5px 90px 5px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      transition: .2s ease-in-out;
+    }
+
+    .discord {
+      margin-top: -.9em;
+      margin-left: -1.2em;
+      fill: #8c9eff;
+    }
+
+    .card1:hover {
+      cursor: pointer;
+      scale: 1.1;
+      background-color: #0a66c2;
+    }
+
+    .card1:hover .linkedin {
+      color: white;
+    }
+
+    .card2:hover {
+      cursor: pointer;
+      scale: 1.1;
+      background-color: color(orangeText);
+    }
+
+    .card2:hover .email {
+      color: white;
+    }
+
+    .card3:hover {
+      cursor: pointer;
+      scale: 1.1;
+      background-color: black;
+    }
+
+    .card3:hover .github {
+      fill: white;
+    }
+
+    .card4:hover {
+      cursor: pointer;
+      scale: 1.1;
+      background-color: #8c9eff;
+    }
+
+    .card4:hover .discord {
+      fill: white;
+    }
+
+
+    .astrodivider {
+      margin:64px auto;
+      width:100%;
+      max-width: 100%;
+      position:relative;
+    }
+
+    .astrodividermask {
+        overflow:hidden; height:20px;
+    }
+
+    .astrodividermask:after {
+          content:'';
+          display:block; margin:-25px auto 0;
+          width:100%; height:25px;
+            border-radius:125px / 12px;
+           box-shadow:0 0 8px #1574d4;
+    }
+    .astrodivider span {
+        width:50px; height:50px;
+        position:absolute;
+        bottom:100%; margin-bottom:-25px;
+        left:50%; margin-left:-25px;
+        border-radius:100%;
+       box-shadow:0 2px 4px #2b0c89;
+        background:#fff;
+    }
+    .astrodivider i {
+        position:absolute;
+        top:4px; bottom:4px;
+        left:4px; right:4px;
+        border-radius:100%;
+        border:1px dashed #68beaa;
+        text-align:center;
+        line-height:40px;
+        font-style:normal;
+         color:#049372;
+    }
+
+    #findRecipes{
+
+      button {
+        background: transparent;
+        color: midnightblue;
+        font-size: 17px;
+        text-transform: uppercase;
+        font-weight: 600;
+        border: none;
+        padding: 20px 30px;
+        perspective: 30rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.308);
+      }
+
+      button::before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 10px;
+        background: linear-gradient(320deg, rgba(0, 140, 255, 0.678), rgba(128, 0, 128, 0.308));
+        z-index: 1;
+        transition: background 3s;
+      }
+
+      button:hover::before {
+        animation: rotate 1s;
+        transition: all .5s;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotateY(180deg);
+        }
+
+        100% {
+          transform: rotateY(360deg);
+        }
+      }
+      }

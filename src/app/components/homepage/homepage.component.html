@@ -1,0 +1,246 @@
+<video autoplay muted id="myVideo" *ngIf="isFirstLoad">
+  <source src="../../../assets/videos/Homepage-video.mp4" type="video/mp4">
+</video>
+
+<div id="banner" class="d-flex flex-column justify-content-end img-fluid" alt="immagine spezie banner">
+  <img class="w-100" src="../../../assets/img/Benvenuto da (1).png" alt="">
+</div>
+
+<!-- GIF -->
+<div class="text-center">
+  <img class="img-fluid" src="../../../assets/videos/baker_dough.gif" alt="">
+</div>
+
+<!-- Get Started -->
+<div class="description row d-flex flex-row align-items-center">
+
+  <div class="col-lg-6 col-md-12 col-12 text-center px-lg-5 my-4">
+    <h2 class="fs-1">
+      Benvenuto da...
+      <br> <b>"LA TUA SMART CULINARY SOLUTION!"</b>
+    </h2>
+    <h2 class="my-3">
+      Ancora una volta non sai cosa cucinare o cosa fare con gli ingredienti che stanno lì nel tuo frigo o nello
+      scaffale?
+    </h2>
+    <h2 class="my-3">
+      Nessun Problema....Ci penso io!
+    </h2>
+    <h2>
+      Inserisci qui sotto gli ingredienti e ti aiuterò in questa ardua impresa!
+    </h2>
+  </div>
+
+  <div class="col-lg-6 col-md-12 col-12 my-5 text-center">
+    <img class="col-lg-6 col-md-6 col-12 img-fluid px-lg-3 mb-1 mb-md-5 px-1"
+      src="../../../assets/img/man_standing.jpeg" alt="">
+    <img class="col-lg-6 col-md-6 col-12 img-fluid px-lg-3 mt-5 mt-md-5 px-1"
+      src="../../../assets/img/man_standing(3).jpeg" alt="">
+  </div>
+</div>
+
+
+<div class="container-fluid mb-5 text-center" id="contenitore">
+  <div class="container">
+
+    <div class="astrodivider"><div class="astrodividermask"></div><span><i>&#10038;</i></span></div>
+    <h1 class="">Inserisci gli ingredienti</h1>
+    <div class="input-container my-4">
+      <input type="text" [(ngModel)]="currentIngredient" (input)="currentIngredient = formatInput(currentIngredient)" (keydown.enter)="addIngredient($event)" placeholder="Aggiungi ingrediente">
+      <button class="button d-flex justify-content-center" (click)="addIngredient($event)">Aggiungi</button>
+    </div>
+
+  <!-- Lista degli ingredienti aggiunti -->
+  <div class="container">
+
+    <div class="row">
+      <div class="row">
+        <div class="col-md-2 my-3" *ngFor="let ingredient of ingredientsList; let i = index">
+          <p class="badge fs-5 bg-light text-black" type="button" (click)="removeIngredient(i)">
+            {{ ingredient }} <span> <i class="bi bi-x-lg"></i></span>
+          </p>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-center" id="findRecipes">
+        <button class="col-2 btn btn-primary my-4" type="button" (click)="searchRecipes()">
+          <a>Cerca ricette</a>
+        </button>
+    </div>
+    </div>
+  </div>
+
+
+  <!-- Modale Ingredienti non trovati -->
+  <div class="modal fade text-dark" id="noIngredientModal" tabindex="-1" aria-labelledby="noIngredientModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content customModal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="noIngredientModalLabel">Mi spiace!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()"
+            aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="../../../assets/img/IMG_9534.JPG" alt="Nessun ingrediente trovato" class="img-fluid rounded">
+          <p>Nessun ingrediente trovato!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()" data-bs-dismiss="modal">Chiudi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="astrodivider"><div class="astrodividermask"></div><span><i>&#10038;</i></span></div>
+</div>
+
+  <div *ngIf="recipesWithExactIngredients.length > 0">
+
+    <h2>Ricette con gli ingredienti specificati:</h2>
+
+    <div class="row">
+
+      <div *ngFor="let recipe of recipesWithExactIngredients" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center">
+        <div class="card box h100 my-4">
+          <div>
+            <img src="{{recipe.imageUrl}}" class="img-fluid rounded object-fit-cover" style="height: 300px; width: 600px;" alt="...">
+            <div>
+              <div class="card-body">
+                <h4 class="card-title">{{recipe.title}}</h4>
+                <p>Categoria: {{recipe.category}}</p>
+                <p class="card-text mb-0">Tempo di preparazione: {{recipe.prepTime}}</p>
+                <p class="card-text mt-0">Tempo di cottura: {{recipe.cookTime}}</p>
+                <p class="card-text">Portate: {{recipe.servings}}</p>
+              </div>
+              <div class="d-flex flex-row justify-content-center">
+                <button routerLink='/recipes/detail-page/{{recipe.id}}' class="btn m-2"> Info
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="recipesWithAnyIngredients.length > 0">
+
+    <div class="row">
+      <h2>Ricette con almeno uno degli ingredienti specificati:</h2>
+      <div *ngFor="let recipe of recipesWithAnyIngredients" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center my-3">
+        <div class="card box h100 my-4">
+          <div>
+            <img src="{{recipe.imageUrl}}" class="img-fluid rounded object-fit-cover" style="height: 300px; width: 600px;" alt="...">
+            <div>
+              <div class="card-body">
+                <h4 class="card-title">{{recipe.title}}</h4>
+                <p>Categoria: {{recipe.category}}</p>
+                <p class="card-text mb-0">Tempo di preparazione: {{recipe.prepTime}}</p>
+                <p class="card-text mt-0">Tempo di cottura: {{recipe.cookTime}}</p>
+                <p class="card-text">Portate: {{recipe.servings}}</p>
+              </div>
+              <div class="d-flex flex-row justify-content-center">
+                <button routerLink='/recipes/detail-page/{{recipe.id}}' class="btn m-2"> Info
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- GIF -->
+<div class="text-center background">
+  <img class="img-fluid" src="../../../assets/videos/baker-whisk01.gif" alt="">
+</div>
+
+<!-- Newsletter -->
+<div class="container my-5">
+  <div class="mt-4 p-5 newsLetter rounded-5">
+    <h3>Sii il primo a sapere e ricevere le nostre nuove ricette e nuove categoria da scoprire!</h3>
+    <div class="input-group my-3">
+      <input type="email" class="form-control" placeholder="Inserisci qui la tua e-mail">
+      <button>
+        <div class="svg-wrapper-1">
+          <div class="svg-wrapper">
+            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z" fill="currentColor"></path>
+            </svg>
+          </div>
+        </div>
+        <span>Send</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="w-100 py-4 text-dark">
+  <div class="container py-4">
+    <div class="row gy-4 gx-5">
+
+      <div class="col-lg-4 col-md-6">
+        <h5 class="h1 text-white">CULINARY SOLUTION</h5>
+        <p class="small">Sempre lieti di potervi essere d'aiuto nelle decisioni importanti!</p>
+        <p class="small mb-0">&copy; Copyrights. All rights reserved. <a class="text-primary"
+            href="#">www.culinary-solution.com</a></p>
+      </div>
+
+      <div class="col-lg-2 col-md-6">
+        <h5 class="text-white mb-3">Quick links</h5>
+        <ul class="list-unstyled">
+          <li><a href="/homepage">Home</a></li>
+          <li><a href="#">Get started</a></li>
+          <li><a href="/recipes">Recipes</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="main">
+          <div class="up">
+            <button class="card1">
+              <a href="https://www.linkedin.com/in/emanuele-murru"><i class="bi bi-linkedin linkedin"></i></a>
+            </button>
+            <button class="card2">
+              <a type="e-mail" href="mailto:murru.ema@gmail.com"><i class="bi bi-envelope-fill email"></i></a>
+            </button>
+          </div>
+          <div class="down">
+            <button class="card3">
+              <a href="https://github.com/Emanuele-Murru"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px" height="30px" class="github"><path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"></path></svg></a>
+            </button>
+            <button class="card4">
+              <a href="https://www.discordapp.com/users/870443281182523472"><svg height="30px" width="30px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" class="discord"><path d="M40,12c0,0-4.585-3.588-10-4l-0.488,0.976C34.408,10.174,36.654,11.891,39,14c-4.045-2.065-8.039-4-15-4s-10.955,1.935-15,4c2.346-2.109,5.018-4.015,9.488-5.024L18,8c-5.681,0.537-10,4-10,4s-5.121,7.425-6,22c5.162,5.953,13,6,13,6l1.639-2.185C13.857,36.848,10.715,35.121,8,32c3.238,2.45,8.125,5,16,5s12.762-2.55,16-5c-2.715,3.121-5.857,4.848-8.639,5.815L33,40c0,0,7.838-0.047,13-6C45.121,19.425,40,12,40,12z M17.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C21,28.209,19.433,30,17.5,30z M30.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C34,28.209,32.433,30,30.5,30z"></path></svg></a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-6" id="goToTop">
+        <button id="back-to-top" (click)="scrollToTop()">
+          <div class="text">
+              <span>Back</span>
+              <span>to</span>
+              <span>top</span>
+          </div>
+          <div class="clone">
+              <span>Back</span>
+              <span>to</span>
+              <span>top</span>
+          </div>
+          <svg width="20px" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+      </button>
+      </div>
+
+    </div>
+  </div>
+</footer>
