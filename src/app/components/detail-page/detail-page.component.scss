@@ -12,6 +12,13 @@ i {
   white-space: pre-line;
 }
 
+.imgRecipe {
+  img {
+    width: 100%;
+    max-height: 500px;
+  }
+}
+
 // ---------------------------------------------------------------- Delete button
 #delete {
   button {

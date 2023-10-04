@@ -60,7 +60,7 @@ export class DetailPageComponent implements OnInit {
   }
 
   formattaTesto(testo: string): string {
-    const testoFormattato = testo.replace(/(\d\))/g, '\n$1');
+    const testoFormattato = testo.replace(/(\d\))/g, '\n\n$1');
     return testoFormattato;
   }
 

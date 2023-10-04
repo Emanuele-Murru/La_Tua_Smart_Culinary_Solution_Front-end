@@ -24,28 +24,30 @@
 
     <div class="row">
 
-      <select [(ngModel)]="selectedCategory" (change)="filterRecipesByCategory(selectedCategory)">
-        <option value="" selected>Filtra per categorie</option>
-        <option value="ANTIPASTI">ANTIPASTI</option>
-        <option value="PRIMI">PRIMI</option>
-        <option value="SECONDI">SECONDI</option>
-        <option value="CONTORNI">CONTORNI</option>
-        <option value="DESSERTS">DESSERTS</option>
-      </select>
+      <div class="container">
+        <p class="m-0">Filtra per categoria:</p>
+          <select class="form-select select mb-5" aria-label="Small select example" [(ngModel)]="selectedCategory" (change)="filterRecipesByCategory(selectedCategory)">
+            <option value="" selected>-- ALL --</option>
+            <option value="ANTIPASTI">ANTIPASTI</option>
+            <option value="PRIMI">PRIMI</option>
+            <option value="SECONDI">SECONDI</option>
+            <option value="CONTORNI">CONTORNI</option>
+            <option value="DESSERTS">DESSERTS</option>
+          </select>
+      </div>
 
-
-      <!----------------------------------------------------------- RECIPE CARD ------------------------------------------>
+      <!----------------------------------------------------------- RECIPE CARDS ------------------------------------------>
       <div *ngFor="let recipe of recipes" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center my-4">
         <div class="card box h-100">
           <div>
             <img src="{{recipe.imageUrl}}" class="img-fluid rounded object-fit-cover" style="height: 300px; width: 600px;" alt="{{recipe.title}}">
             <div>
               <div class="card-body">
-                <h5 class="card-title">Titolo: {{recipe.title}}</h5>
-                <span>Categoria: {{recipe.category}}</span>
-                <p class="card-text">Tempo di preparazione: {{recipe.prepTime}}</p>
-                <p class="card-text">Tempo di cottura: {{recipe.cookTime}}</p>
-                <p class="card-text"><small class="text-body-secondary">Portate: {{recipe.servings}}</small></p>
+                <h4 class="card-title">{{recipe.title}}</h4>
+                <p>Categoria: {{recipe.category}}</p>
+                <p class="card-text mb-0">Tempo di preparazione: {{recipe.prepTime}}</p>
+                <p class="card-text mt-0">Tempo di cottura: {{recipe.cookTime}}</p>
+                <p class="card-text">Portate: {{recipe.servings}}</p>
               </div>
               <div class="d-flex flex-row justify-content-center">
                 <button routerLink='detail-page/{{recipe.id}}' class="btn m-2"> Info
@@ -97,10 +99,11 @@
                     </select>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group resizable-input">
                     <label for="Instructions">Istruzioni:</label>
-                    <input type="text" class="form-control" id="instructions" [(ngModel)]="newRecipe.instructions"
-                      name="instructions" required>
+                      <textarea class="form-control resizable-input" id="instructions" [(ngModel)]="newRecipe.instructions"
+                        name="instructions" required>
+                      </textarea>
                   </div>
 
                   <div class="form-group">
