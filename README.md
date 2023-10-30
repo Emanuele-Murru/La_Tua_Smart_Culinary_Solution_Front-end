@@ -47,4 +47,4 @@ PG_PASSWORD=la_tua_db_password
 JWT_SECRET=la_tua_secret_key
 
 ```
-Una volta configurato e avviato il back-end è necessario aprire il progetto front-end e scaricare i node modules con `ng i` e dopo di chè avviare il progetto con `ng s -o`
+Una volta configurato e avviato il back-end è necessario aprire il progetto front-end e scaricare i node modules con `npm i` e dopo di chè avviare il progetto con `ng s -o`
